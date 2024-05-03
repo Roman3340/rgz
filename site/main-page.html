@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АО "РЕАЛИСТ БАНК" - услуги банка для среднего и малого бизнеса</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon/favicon-16x16.png">
+    <link rel="icon" href="../favicon/favicon-32x32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        function showMenu(button) {
+            button.querySelector('.dropdown').style.maxHeight = '200px';
+            button.querySelector('.dropdown').style.opacity = '1';
+        }
+
+        function hideMenu(button) {
+            button.querySelector('.dropdown').style.maxHeight = '0';
+            button.querySelector('.dropdown').style.opacity = '0';
+        }
+    </script>
+    <style>
+        .mainpagelogo {
+            position: absolute;
+            margin-top: 50px;
+            margin-right: 10px;
+        }
+        .text-container {
+        position: absolute;
+        font-family: 'Roboto', sans-serif;
+        top: 320px; /* Отступ сверху, чтобы соответствовать положению картинки */
+        right: 200px; /* Отступ справа */
+        text-align: right; /* Выравнивание текста по правому краю */
+        color: #1D4E9E; /* Цвет текста "ЛУЧШИЙ БАНК" */
+    }
+
+    .best-bank {
+        font-size: 90px; /* Размер шрифта "ЛУЧШИЙ БАНК" */
+        font-weight: bold; /* Жирный шрифт */
+    }
+
+    .text-container div:nth-child(2) {
+        color: black; /* Цвет остального текста */
+        font-size: 90px;
+    }
+    .text-container div:nth-child(3) {
+        color: black; /* Цвет остального текста */
+        font-size: 90px;
+        font-weight: bold;
+        font-family: 'Roboto', sans-serif; /* Устанавливаем шрифт Roboto */
+    }
+    .chukaeva {
+    color: #1D4E9E;
+    font-weight: bold;
+    }
+
+    .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 42px;
+            background-color: #f6f6f6;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 10px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out; /* Анимация изменения высоты */
+            z-index: 1;
+            opacity: 0; /* Начальное состояние блока: невидимое */
+            pointer-events: none; /* Блокируем события мыши в скрытом состоянии */
+        }
+
+    .button:hover .dropdown, 
+    .dropdown:hover {
+        max-height: 200px; /* Устанавливаем максимальную высоту для открытого блока */
+        opacity: 1; /* Делаем блок видимым */
+        pointer-events: auto; /* Включаем обработку событий мыши */
+    }
+    .button:not(:hover) .dropdown, 
+    .dropdown:not(:hover) {
+        max-height: 0;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .dropdown a {
+        display: block;
+        padding: 8px 12px;
+        font-size: 14px;
+        color: #333; /* Цвет текста серый */
+        text-decoration: none; /* Убираем подчеркивание ссылок */
+        transition: color 0.3s; /* Плавное изменение цвета при наведении */
+    }
+
+    .dropdown a:hover {
+        color: #1D4E9E; /* Изменяем цвет текста при наведении на ссылку */
+    }
+    </style>
+</head>
+<body>
+    <header class="buttons-container">
+        <a href="../site/main-page.html" class="header_logo">
+            <img src="https://realistbank.ru/local/media-new-template/images/logo.svg" alt="Реалист банк">
+        </a>
+        <button class="button" onmouseover="showMenu(this)" onmouseout="hideMenu(this)">
+            О компании
+            <div class="dropdown">
+                <a href="about.html">Наша деятельность</a><br>
+                <a href="history.html">История банка</a><br>
+                <a href="team.html">Наша команда</a>
+            </div>
+        </button>
+        <button class="button" onclick="">Новости</button>
+        <button class="button" onclick="">Курс валют</button>
+        <button class="button" onclick="">Контактные данные</button>
+        <button class="button" onclick="">Видео</button>
+    </header>
+    <main>
+        <img class="mainpagelogo" src="../images/main_swipper_planet_left.webp">
+        <div class="text-container">
+            <div class="best-bank">ЛУЧШИЙ БАНК</div>
+            <div>по мнению</div>
+            <div>Романа <span class="chukaeva">Чукаева</span></div>
+        </div>
+    </main>
+    <footer>
+        &copy; Чукаев Роман, ФБИ-24, 2 курс, 2024
+    </footer>
+</body>
+</html>
