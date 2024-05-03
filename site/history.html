@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АО "РЕАЛИСТ БАНК" - услуги банка для среднего и малого бизнеса</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon/favicon-16x16.png">
+    <link rel="icon" href="../favicon/favicon-32x32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap">
+    <script>
+        let i = 0; // Глобальная переменная для отслеживания текущего индекса символа
+    
+        function typeWriterEffect() {
+            const text = document.getElementById("typing-text").textContent;
+            document.getElementById("typing-text").textContent = "";
+            const speed = 150; // скорость печати
+    
+            function type() {
+                if (i < text.length) {
+                    document.getElementById("typing-text").textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    // После печати текста, задержка 1 секунда, затем запуск анимации удаления текста
+                    setTimeout(eraseText, 1000);
+                }
+            }
+    
+            function eraseText() {
+                const text = document.getElementById("typing-text").textContent;
+                let j = text.length - 1;
+                const speed = 50; // скорость стирания
+    
+                function erase() {
+                    if (j >= 0) {
+                        const newText = text.substring(0, j);
+                        document.getElementById("typing-text").textContent = newText;
+                        j--;
+                        setTimeout(erase, speed);
+                    } else {
+                        // Текст стерся, можно снова запустить анимацию печати
+                        i = 0; // Сбрасываем i
+                        setTimeout(type, 1000);
+                    }
+                }
+    
+                erase();
+            }
+    
+            type(); // Переносим вызов type() сюда
+        }
+    
+        // Запускаем анимацию печати текста при загрузке страницы
+        document.addEventListener("DOMContentLoaded", typeWriterEffect);
+
+        function showMenu(button) {
+            button.querySelector('.dropdown').style.maxHeight = '200px';
+            button.querySelector('.dropdown').style.opacity = '1';
+        }
+
+        function hideMenu(button) {
+            button.querySelector('.dropdown').style.maxHeight = '0';
+            button.querySelector('.dropdown').style.opacity = '0';
+        }
+    </script>
+    <style>
+        .block {
+            position: relative; /* Используем относительное позиционирование */
+            padding: 20px;
+            width: 400px; /* Увеличиваем ширину для четвертого блока */
+            text-align: left;
+            border-radius: 10px; /* Закругляем углы */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Добавляем тень */
+            transition: transform 0.3s ease; /* Плавное изменение размера при наведении */
+        }
+
+
+        .text-container {
+            position: absolute;
+            font-family: 'Rubik', sans-serif;
+            top: 200px;
+            left: 50%; /* Центрируем начальное положение */
+            transform: translateX(-50%); /* Центрируем по горизонтали */
+            text-align: center; /* Выравниваем текст по центру */
+            color: black;
+            font-size: 90px;
+        }
+
+        .text-container div:nth-child(2) {
+            color: black; /* Цвет остального текста */
+            font-size: 90px;
+        }
+        .text-container div:nth-child(3) {
+            color: black; /* Цвет остального текста */
+            font-size: 90px;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif; /* Устанавливаем шрифт Roboto */
+        }
+        .bluetext {
+            color: #1D4E9E;
+            font-weight: bold;
+        }
+
+        /* Стили для текста */
+        /* Стили для текста */
+        .typed-text {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 0.08em solid #000; /* Создаем мигающий курсор печати */
+            animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #000; }
+        }
+        body {
+            font-family: 'Rubik', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .blue-bar {
+            background-color: #1D4E9E;
+            height: 300px; /* Высота полоски */
+            width: 10px; /* Длина полоски */
+            position: absolute;
+            left: 200px; /* Расстояние от левого края */
+            top: 400px; /* Начало полоски от верхнего края */
+            border-radius: 1px; /* Закругляем углы */
+            background: linear-gradient(45deg, #fff, #1D4E9E);
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); /* Тень */
+            z-index: 1; /* Чтобы полоска была под текстом */
+        }
+
+        .blue-bar::after {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, #fff, #1D4E9E);
+            z-index: -1; /* Располагаем подсветку под основным фоном */
+            border-radius: 5px; /* Закругляем углы */
+        }
+
+        .content {
+            margin-left: 240px;
+            padding-top: 260px;
+            position: relative; /* Указываем позиционирование относительно */
+            z-index: 2; /* Чтобы текст был над подсветкой */
+            max-width: 1400px; /* Максимальная ширина текста */
+            text-align: justify;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header class="buttons-container">
+        <a href="../site/main-page.html" class="header_logo">
+            <img src="https://realistbank.ru/local/media-new-template/images/logo.svg" alt="Реалист банк">
+        </a>
+        <button class="button" onmouseover="showMenu(this)" onmouseout="hideMenu(this)">
+            О компании
+            <div class="dropdown">
+                <a href="about.html">Наша деятельность</a><br>
+                <a href="history.html">История банка</a><br>
+                <a href="team.html">Наша команда</a>
+            </div>
+        </button>
+        <button class="button" onclick="">Новости</button>
+        <button class="button" onclick="">Курс валют</button>
+        <button class="button" onclick="">Контактные данные</button>
+        <button class="button" onclick="">Видео</button>
+    </header>
+    <main>
+        <div class="text-container">
+            <span id="typing-text" class="typed-text">История банка</span>
+            <!-- <div>Наша <span class="chukaeva">деятельность</span></div> -->
+        </div>
+        <div class="blue-bar"></div>
+            <div class="content">
+                <h1>История банка "АО РЕАЛИСТ БАНК"</h1>
+                <p>
+                    В далеком 1990 году в суете перемен и реформ в экономике России, родился банк, который поставил перед собой амбициозную задачу — <i>стать опорой для развития малого и среднего бизнеса.</i> Этот банк получил имя <b>"РЕАЛИСТ"</b>, и его основатели, будучи предпринимателями сами, знали, как сложно начинать с нуля.
+                </p>
+                <p>
+                    Первые годы были испытанием и проверкой сил. Банк вырос вместе с бизнесом своих клиентов, предлагая им инновационные финансовые инструменты, гибкие условия кредитования и высокий уровень сервиса. За короткий срок "РЕАЛИСТ" смог утвердиться на рынке как надежный партнер для предпринимателей.
+                </p>
+                <p>
+                    С каждым годом банк расширял свои границы, открывая новые отделения в разных регионах страны. В своей работе "РЕАЛИСТ" придерживался принципов прозрачности, ответственности и уважения к каждому клиенту. Эти ценности стали основой для формирования культуры компании.
+                </p>
+                <p>
+                    Сегодня "АО РЕАЛИСТ БАНК" — это современное финансовое учреждение, которое остается верным своим идеалам. Банк активно развивает цифровые технологии, чтобы делать финансовые услуги еще более удобными и доступными для своих клиентов. Но в то же время он сохраняет теплые отношения и внимательное отношение к каждому предпринимателю, стараясь быть не просто банком, а настоящим партнером в бизнесе.
+                </p>
+                <p>
+                    История "АО РЕАЛИСТ БАНК" — это история успеха предпринимателей, которые смогли достичь своих целей благодаря надежной финансовой поддержке. Банк гордится своими клиентами и готов помогать им в их стремлении к новым высотам.
+                </p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        &copy; Чукаев Роман, ФБИ-24, 2 курс, 2024
+    </footer>
+</body>
+</html>

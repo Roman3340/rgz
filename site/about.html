@@ -55,6 +55,16 @@
     
         // Запускаем анимацию печати текста при загрузке страницы
         document.addEventListener("DOMContentLoaded", typeWriterEffect);
+
+        function showMenu(button) {
+            button.querySelector('.dropdown').style.maxHeight = '200px';
+            button.querySelector('.dropdown').style.opacity = '1';
+        }
+
+        function hideMenu(button) {
+            button.querySelector('.dropdown').style.maxHeight = '0';
+            button.querySelector('.dropdown').style.opacity = '0';
+        }
     </script>
     <style>
         .block {
