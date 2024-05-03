@@ -10,8 +10,131 @@
     <link rel="icon" href="../favicon/favicon-32x32.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script>
+        let i = 0; // Глобальная переменная для отслеживания текущего индекса символа
+    
+        function typeWriterEffect() {
+            const text = document.getElementById("typing-text").textContent;
+            document.getElementById("typing-text").textContent = "";
+            const speed = 150; // скорость печати
+    
+            function type() {
+                if (i < text.length) {
+                    document.getElementById("typing-text").textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    // После печати текста, задержка 1 секунда, затем запуск анимации удаления текста
+                    setTimeout(eraseText, 1000);
+                }
+            }
+    
+            function eraseText() {
+                const text = document.getElementById("typing-text").textContent;
+                let j = text.length - 1;
+                const speed = 50; // скорость стирания
+    
+                function erase() {
+                    if (j >= 0) {
+                        const newText = text.substring(0, j);
+                        document.getElementById("typing-text").textContent = newText;
+                        j--;
+                        setTimeout(erase, speed);
+                    } else {
+                        // Текст стерся, можно снова запустить анимацию печати
+                        i = 0; // Сбрасываем i
+                        setTimeout(type, 1000);
+                    }
+                }
+    
+                erase();
+            }
+    
+            type(); // Переносим вызов type() сюда
+        }
+    
+        // Запускаем анимацию печати текста при загрузке страницы
+        document.addEventListener("DOMContentLoaded", typeWriterEffect);
     </script>
     <style>
+        .blue-block {
+            position: absolute;
+            background-color: #1D4E9E;
+            color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            margin-left: 250px;
+            margin-top: 400px;
+            width: 200px;
+        }
+
+        /* Стили для белого блока */
+        .white-block {
+            position: absolute;
+            background-color: white;
+            color: #333;
+            padding: 20px;
+            margin-bottom: 20px;
+            margin-left: 350px;
+            margin-top: 500px;
+            width: 200px;
+        }
+
+        /* Стили для серого блока */
+        .gray-block {
+            position: absolute;
+            background-color: #999393;
+            color: black;
+            padding: 20px;
+            margin-bottom: 20px;
+            margin-left: 450px;
+            margin-top: 600px;
+            width: 200px;
+        }
+
+        .text-container {
+            position: absolute;
+            font-family: 'Roboto', sans-serif;
+            top: 200px;
+            left: 50%; /* Центрируем начальное положение */
+            transform: translateX(-50%); /* Центрируем по горизонтали */
+            text-align: center; /* Выравниваем текст по центру */
+            color: black;
+            font-size: 90px;
+        }
+
+        .text-container div:nth-child(2) {
+            color: black; /* Цвет остального текста */
+            font-size: 90px;
+        }
+        .text-container div:nth-child(3) {
+            color: black; /* Цвет остального текста */
+            font-size: 90px;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif; /* Устанавливаем шрифт Roboto */
+        }
+        .bluetext {
+            color: #1D4E9E;
+            font-weight: bold;
+        }
+
+        /* Стили для текста */
+        /* Стили для текста */
+        .typed-text {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 0.08em solid #000; /* Создаем мигающий курсор печати */
+            animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #000; }
+        }
     </style>
 </head>
 <body>
@@ -33,6 +156,22 @@
         <button class="button" onclick="">Видео</button>
     </header>
     <main>
+        <div class="text-container">
+            <span id="typing-text" class="typed-text">Наша деятельность</span>
+            <!-- <div>Наша <span class="chukaeva">деятельность</span></div> -->
+        </div>
+        <div class="blue-block">
+            <h2>Синий блок</h2>
+            <p>Это синий блок.</p>
+        </div>
+        <div class="white-block">
+            <h2>Белый блок</h2>
+            <p>Это белый блок.</p>
+        </div>
+        <div class="gray-block">
+            <h2>Серый блок</h2>
+            <p>Это серый блок.</p>
+        </div>
     </main>
     <footer>
         &copy; Чукаев Роман, ФБИ-24, 2 курс, 2024
