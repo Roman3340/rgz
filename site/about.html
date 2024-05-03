@@ -9,6 +9,7 @@
     <link rel="icon" href="../favicon/favicon-16x16.png">
     <link rel="icon" href="../favicon/favicon-32x32.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap">
     <script>
         let i = 0; // Глобальная переменная для отслеживания текущего индекса символа
     
@@ -56,44 +57,76 @@
         document.addEventListener("DOMContentLoaded", typeWriterEffect);
     </script>
     <style>
-        .blue-block {
-            position: absolute;
-            background-color: #1D4E9E;
-            color: white;
+        .block {
+            position: relative; /* Используем относительное позиционирование */
             padding: 20px;
-            margin-bottom: 20px;
-            margin-left: 250px;
-            margin-top: 400px;
-            width: 200px;
+            width: 400px; /* Увеличиваем ширину для четвертого блока */
+            text-align: left;
+            border-radius: 10px; /* Закругляем углы */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Добавляем тень */
+            transition: transform 0.3s ease; /* Плавное изменение размера при наведении */
+        }
+
+        /* Стили для синего блока */
+        .blue-block {
+            background-color: #f6f6f6;
+            border: #1D4E9E solid 2px;
+            color: black;
+            font-family: 'Rubik', sans-serif;
+            top: 400px;
+            left: 150px;
+            width: 400px;
+            height: 200px;
+            cursor: pointer;
         }
 
         /* Стили для белого блока */
-        .white-block {
-            position: absolute;
-            background-color: white;
-            color: #333;
-            padding: 20px;
-            margin-bottom: 20px;
-            margin-left: 350px;
-            margin-top: 500px;
-            width: 200px;
+        .black-block {
+            background-color: #f6f6f6;
+            border: #1D4E9E solid 2px;
+            color: black;
+            font-family: 'Rubik', sans-serif;
+            top: 157px;
+            left: 710px;
+            width: 400px;
+            height: 200px;
+            cursor: pointer;
         }
 
         /* Стили для серого блока */
         .gray-block {
-            position: absolute;
-            background-color: #999393;
+            background-color: #f6f6f6;
+            border: #1D4E9E solid 2px;
             color: black;
-            padding: 20px;
-            margin-bottom: 20px;
-            margin-left: 450px;
-            margin-top: 600px;
-            width: 200px;
+            font-family: 'Rubik', sans-serif;
+            top: -83px;
+            left: 1290px;
+            width: 400px;
+            height: 200px;
+            cursor: pointer;
+        }
+
+        .black-block-down {
+            background-color: #f6f6f6;
+            border: #1D4E9E solid 2px;
+            color: black;
+            font-family: 'Rubik', sans-serif;
+            top: -20px;
+            left: 710px;
+            width: 400px;
+            height: 200px;
+            cursor: pointer;
+        }
+
+        /* При наведении меняем размер блока */
+        .block:hover {
+            transform: scale(1.05);
+            box-shadow: 4px 10px 20px rgba(0, 0, 0, 0.2); /* Добавляем тень */
         }
 
         .text-container {
             position: absolute;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Rubik', sans-serif;
             top: 200px;
             left: 50%; /* Центрируем начальное положение */
             transform: translateX(-50%); /* Центрируем по горизонтали */
@@ -135,6 +168,34 @@
             from, to { border-color: transparent; }
             50% { border-color: #000; }
         }
+        .activity_first {
+            position: absolute;
+            margin-right: 0px;
+            margin-top: -30px;
+            margin-left: 230px;
+            z-index: 2;
+        }
+        .activity_first2 {
+            position: absolute;
+            margin-right: 0px;
+            margin-top: -38px;
+            margin-left: 240px;
+            z-index: 2;
+        }
+        .activity_first3 {
+            position: absolute;
+            margin-right: 0px;
+            margin-top: -30px;
+            margin-left: 260px;
+            z-index: 2;
+        }
+        .activity_first4 {
+            position: absolute;
+            margin-right: 0px;
+            margin-top: -20px;
+            margin-left: 260px;
+            z-index: 2;
+        }
     </style>
 </head>
 <body>
@@ -160,17 +221,33 @@
             <span id="typing-text" class="typed-text">Наша деятельность</span>
             <!-- <div>Наша <span class="chukaeva">деятельность</span></div> -->
         </div>
-        <div class="blue-block">
-            <h2>Синий блок</h2>
-            <p>Это синий блок.</p>
+        <div class="block blue-block">
+            <img class="activity_first" src="../images/service_0_1_.png">
+            <h2>Лизинг и автокредит</h2>
+            <p><b>от 5%</b> - аванс.</p>
+            <p><b>до 10 лет</b> - финансируем<br>технику с пробегом.</p>
+            <p>одобрение <b>до 50 млн руб</b></p>
         </div>
-        <div class="white-block">
-            <h2>Белый блок</h2>
-            <p>Это белый блок.</p>
+        <div class="block black-block">
+            <img class="activity_first2" src="../images/service_0_4.png">
+            <h2>Счет для бизнеса</h2>
+            <p><b>0 рублей</b> - открытие расчетного<br>счета</p>
+            <p><b>1 день</b> - срок открытия счета</p>
         </div>
-        <div class="gray-block">
-            <h2>Серый блок</h2>
-            <p>Это серый блок.</p>
+        <div class="block gray-block">
+            <img class="activity_first3" src="../images/service_0_3.png">
+            <h2>Операции на рынке<br>драгоценных металлов</h2>
+            <p>Торговые операции<br>с драгоценными металлами</p>
+            <p>Финансирование<br>недропользователей</p>
+        </div>
+
+        <div class="block black-block-down">
+            <img class="activity_first4" src="../images/service_0_2.png">
+            <h2>Кредиты и гарантии</h2>
+            <p>Овердрафт</p>
+            <p>Ипотека для бизнеса</p>
+            <p>Банковские гарантии</p>
+            <p>Экспресс кредит на исполнение<br>контракта</p>
         </div>
     </main>
     <footer>
