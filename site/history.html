@@ -13,48 +13,58 @@
     <script>
         let i = 0; // Глобальная переменная для отслеживания текущего индекса символа
     
+        document.addEventListener("DOMContentLoaded", typeWriterEffect);
+
         function typeWriterEffect() {
-            const text = document.getElementById("typing-text").textContent;
-            document.getElementById("typing-text").textContent = "";
-            const speed = 150; // скорость печати
-    
+            const texts = [
+                "История банка",
+                "The history of the bank",
+                "Путь к звездам",
+                "Из грязи в ..."
+            ];
+
+            let index = 0; // Индекс текущего текста
+            let i = 0; // Индекс текущего символа
+
             function type() {
-                if (i < text.length) {
-                    document.getElementById("typing-text").textContent += text.charAt(i);
+                if (i < texts[index].length) {
+                    document.getElementById("typing-text-1").innerHTML += texts[index].charAt(i);
                     i++;
                     setTimeout(type, speed);
                 } else {
-                    // После печати текста, задержка 1 секунда, затем запуск анимации удаления текста
-                    setTimeout(eraseText, 1000);
+                    setTimeout(erase, 1000); // После печати текста, стираем его через 1 секунду
                 }
             }
-    
-            function eraseText() {
-                const text = document.getElementById("typing-text").textContent;
-                let j = text.length - 1;
-                const speed = 50; // скорость стирания
-    
-                function erase() {
+
+            function erase() {
+                let j = texts[index].length - 1;
+                const speed = 50; // Скорость стирания
+
+                function eraseText() {
                     if (j >= 0) {
-                        const newText = text.substring(0, j);
-                        document.getElementById("typing-text").textContent = newText;
+                        let newText = texts[index].substring(0, j);
+                        document.getElementById("typing-text-1").innerHTML = newText;
                         j--;
-                        setTimeout(erase, speed);
+                        setTimeout(eraseText, speed);
                     } else {
-                        // Текст стерся, можно снова запустить анимацию печати
-                        i = 0; // Сбрасываем i
+                        // После стирания текста, переходим к следующему тексту
+                        index++;
+                        i = 0; // Сброс индекса символа
+                        if (index >= texts.length) {
+                            // Если это был последний текст, начинаем сначала
+                            index = 0;
+                        }
+                        // Начинаем печать следующего текста
                         setTimeout(type, 1000);
                     }
                 }
-    
-                erase();
+
+                eraseText(); // Начинаем стирать текст
             }
-    
-            type(); // Переносим вызов type() сюда
+
+            const speed = 150; // Скорость печати
+            type(); // Запускаем анимацию печати
         }
-    
-        // Запускаем анимацию печати текста при загрузке страницы
-        document.addEventListener("DOMContentLoaded", typeWriterEffect);
 
         function showMenu(button) {
             button.querySelector('.dropdown').style.maxHeight = '200px';
@@ -190,7 +200,7 @@
     </header>
     <main>
         <div class="text-container">
-            <span id="typing-text" class="typed-text">История банка</span>
+            <span id="typing-text-1" class="typed-text"></span>
             <!-- <div>Наша <span class="chukaeva">деятельность</span></div> -->
         </div>
         <div class="blue-bar"></div>
