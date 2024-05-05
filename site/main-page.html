@@ -9,6 +9,7 @@
     <link rel="icon" href="../favicon/favicon-16x16.png">
     <link rel="icon" href="../favicon/favicon-32x32.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap">
     <script>
         function showMenu(button) {
             button.querySelector('.dropdown').style.maxHeight = '200px';
@@ -18,6 +19,10 @@
         function hideMenu(button) {
             button.querySelector('.dropdown').style.maxHeight = '0';
             button.querySelector('.dropdown').style.opacity = '0';
+        }
+        // Функция для перенаправления на страницу новостей
+        function redirectToNewsPage() {
+            window.location.href = "news.html";
         }
     </script>
     <style>
@@ -33,27 +38,28 @@
         right: 200px; /* Отступ справа */
         text-align: right; /* Выравнивание текста по правому краю */
         color: #1D4E9E; /* Цвет текста "ЛУЧШИЙ БАНК" */
-    }
+        }
 
-    .best-bank {
-        font-size: 90px; /* Размер шрифта "ЛУЧШИЙ БАНК" */
-        font-weight: bold; /* Жирный шрифт */
-    }
+        .best-bank {
+            font-size: 90px; /* Размер шрифта "ЛУЧШИЙ БАНК" */
+            font-weight: bold; /* Жирный шрифт */
+        }
 
-    .text-container div:nth-child(2) {
-        color: black; /* Цвет остального текста */
-        font-size: 90px;
-    }
-    .text-container div:nth-child(3) {
-        color: black; /* Цвет остального текста */
-        font-size: 90px;
+        .text-container div:nth-child(2) {
+            color: black; /* Цвет остального текста */
+            font-size: 90px;
+        }
+        .text-container div:nth-child(3) {
+            color: black; /* Цвет остального текста */
+            font-size: 90px;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif; /* Устанавливаем шрифт Roboto */
+        }
+        .chukaeva {
+        color: #1D4E9E;
         font-weight: bold;
-        font-family: 'Roboto', sans-serif; /* Устанавливаем шрифт Roboto */
-    }
-    .chukaeva {
-    color: #1D4E9E;
-    font-weight: bold;
-    }
+        }
+        
     </style>
 </head>
 <body>
@@ -69,7 +75,7 @@
                 <a href="team.html">Наша команда</a>
             </div>
         </button>
-        <button class="button" onclick="">Новости</button>
+        <button class="button" onclick="redirectToNewsPage()">Новости</button>
         <button class="button" onclick="">Курс валют</button>
         <button class="button" onclick="">Контактные данные</button>
         <button class="button" onclick="">Видео</button>

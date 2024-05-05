@@ -76,6 +76,10 @@
             button.querySelector('.dropdown').style.maxHeight = '0';
             button.querySelector('.dropdown').style.opacity = '0';
         }
+        // Функция для перенаправления на страницу новостей
+        function redirectToNewsPage() {
+            window.location.href = "news.html";
+        }
     </script>
     <style>
         .block {
@@ -232,7 +236,7 @@
                 <a href="team.html">Наша команда</a>
             </div>
         </button>
-        <button class="button" onclick="">Новости</button>
+        <button class="button" onclick="redirectToNewsPage()">Новости</button>
         <button class="button" onclick="">Курс валют</button>
         <button class="button" onclick="">Контактные данные</button>
         <button class="button" onclick="">Видео</button>

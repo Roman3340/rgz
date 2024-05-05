@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АО "РЕАЛИСТ БАНК" - услуги банка для среднего и малого бизнеса</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon/favicon-16x16.png">
+    <link rel="icon" href="../favicon/favicon-32x32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script>
+        let i = 0; // Глобальная переменная для отслеживания текущего индекса символа
+    
+        document.addEventListener("DOMContentLoaded", typeWriterEffect);
+
+        function typeWriterEffect() {
+            const texts = [
+                "Новости",
+                "Постоянное развитие",
+                "Улучшаемся для вас"
+            ];
+
+            let index = 0; // Индекс текущего текста
+            let i = 0; // Индекс текущего символа
+
+            function type() {
+                if (i < texts[index].length) {
+                    document.getElementById("typing-text-1").innerHTML += texts[index].charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    setTimeout(erase, 1000); // После печати текста, стираем его через 1 секунду
+                }
+            }
+
+            function erase() {
+                let j = texts[index].length - 1;
+                const speed = 50; // Скорость стирания
+
+                function eraseText() {
+                    if (j >= 0) {
+                        let newText = texts[index].substring(0, j);
+                        document.getElementById("typing-text-1").innerHTML = newText;
+                        j--;
+                        setTimeout(eraseText, speed);
+                    } else {
+                        // После стирания текста, переходим к следующему тексту
+                        index++;
+                        i = 0; // Сброс индекса символа
+                        if (index >= texts.length) {
+                            // Если это был последний текст, начинаем сначала
+                            index = 0;
+                        }
+                        // Начинаем печать следующего текста
+                        setTimeout(type, 1000);
+                    }
+                }
+
+                eraseText(); // Начинаем стирать текст
+            }
+
+            const speed = 150; // Скорость печати
+            type(); // Запускаем анимацию печати
+        }
+
+        function showMenu(button) {
+            button.querySelector('.dropdown').style.maxHeight = '200px';
+            button.querySelector('.dropdown').style.opacity = '1';
+        }
+
+        function hideMenu(button) {
+            button.querySelector('.dropdown').style.maxHeight = '0';
+            button.querySelector('.dropdown').style.opacity = '0';
+        }
+
+        // Данные о новостях
+        const newsData = [
+            {
+                title: 'Сайт Реалист Банка вошел в ТОП-30 сайтов кредитных организаций',
+                date: '27 апреля 2024',
+                content: `<br>\Сервис подбора финансовых услуг Бробанк провёл исследование сайтов 150 кредитных организаций и составил рейтинг самых популярных из них.<br>\<br>\
+                Сайт Реалист Банка занял <b>29</b> строчку в списке ресурсов с максимальным приростом популярности за <i>I квартал 2024 года.</i><br>\<br>\
+                Изменение популярности — разница среднемесячной посещаемости в первых кварталах 2023 и 2024 годов.`
+            },
+            {
+                title: 'Реалист Банк занял 25 место в рейтинге АФК по итогам 2023 года',
+                date: '21 марта 2024',
+                content: 'За 2023 год факторинговый портфель Реалист Банка вырос на 190% — с 0.3 млрд рублей до 1.1 млрд рублей. По итогам рейтинга на 1 января 2024 года банк поднялся на 6 позиций с 31 места. Число активных дебиторов выросло на 136%, а объём выплаченного финансирования увеличился на 133% — с 1.8 млрд рублей до 4.3 млрд рублей.<br>\<br>\
+                Общий факторинговый портфель 34 факторов по итогам 2023 года составил 2 трлн 256 млрд рублей. <b>Это на 57% больше</b> по сравнению год к году. По итогам 2024 года ожидается рост портфеля рынка на 30% — до 2.8-2.9 трлн рублей.'
+            },
+            {
+                title: 'Реалист Банк 16 место по портфелю кредитов МБ в рэнкинге «Эксперт РА»',
+                date: '21 марта 2024',
+                content: 'Рейтинговое агентство «Эксперт РА» опубликовало рэнкинг крупнейших банков, кредитующих МСБ по итогам 2023 года. Портфель кредитов субъектам МСБ в Реалист Банке вырос на 66%, подняв банк на 16 место среди 39 конкурентов. А объём выданных кредитов увеличился на 298%, закрепив Реалист Банк на 20 строчке рейтинга.<br>\<br>\
+                Оформить кредит для малого или среднего бизнеса можно в любом офисе Реалист Банка, где осуществляется обслуживание юридических лиц, или на сайте.'
+            },
+            {
+                title: 'Реалист Банк стал членом Объединённой Лизинговой Ассоциации',
+                date: '18 марта 2024',
+                content: 'Реалист Банк стал постоянным членом Объединенной Лизинговой Ассоциации (ОЛА). Вместе с другими членами ОЛА банк будет принимать активное участие в развитии лизинговой отрасли страны.<br>\<br>\
+                «Стать частью ОЛА для нас важно и почетно, так как это возможность объединиться с лидерами рынка, чтобы влиять на лизинг России, выводить его на новый уровень, обмениваться опытом и отстаивать интересы отрасли в органах власти», - прокомментировал Денис Анисимов, Директор департамента кредитных и лизинговых операций Реалист Банка.<br>\<br>\
+                Реалист Банк специализируется на лизинге спецтехники, грузового, коммерческого и легкового автотранспорта. Предоставляет в аренду как новую, так и б/у технику отечественного или иностранного производства. По итогам 2023 года Реалист Банк занял 16 место в рэнкинге рейтингового агентства «Эксперт РА» по объёму нового бизнеса с МСБ в разрезе грузового автотранспорта. А также победил в Национальной банковской премии в номинации «Лучший лизинговый продукт в России» в 2023 году.'
+            },
+            {
+                title: 'Реалист Банк вошёл в ТОП-5 банковских каналов по суточной вовлечённости в Telegram',
+                date: '28 февраля 2024',
+                content: 'Финансовый сервис Бробанк провёл <a href="https://brobank.ru/gruppy-bankov-telegram-2024/">исследование</a> активности 60-ти кредитных организаций в Telegram за 2024 год. Реалист Банк занял <b>4 место</b> по суточной вовлечённости аудитории и <b>6 место</b> по общей вовлечённости аудитории.'
+            },
+            {
+                title: 'НРА повысило прогноз по рейтингу Реалист Банка до «позитивного»',
+                date: '20 февраля 2024',
+                content: 'Национальное Рейтинговое Агентство подтвердило кредитный рейтинг АО «РЕАЛИСТ БАНК» на уровне «ВB-|ru|» по национальной рейтинговой шкале, повысив прогноз до «позитивного».<br>\<br>\
+                «<b>Позитивный</b>» прогноз основывается на ожиданиях Агентства относительно улучшения финансовых показателей банка и профиля бизнес-рисков в случае успешного завершения процедуры реорганизации.<br>\<br>\
+                «В 2024 году мы планируем сосредоточиться на масштабировании бизнеса по направлениям лизинга, факторинга и кредитования МСБ», - прокомментировал Председатель Правления Реалист Банка Владимир Эльманин.<br>\<br>\
+                Основными направлениями деятельности банка являются: лизинг для клиентов МСБ и автокредитование, факторинг, выдача гарантий для участников госзакупок, а также конверсионные операции и обслуживание физических и юридических лиц.'
+            },
+            {
+                title: 'Реалист Банк вошёл в ТОП-10 руководителей российского сегмента private banking',
+                date: '6 февраля 2024',
+                content: 'В 2024 году заместитель председателя правления Реалист Банка, Андрей Казаков, занял 10 место в рейтинге лучших руководителей private banking среди 19 участников 2024 года.\<br>\<br>\
+                За год он поднялся <b>на два места</b> благодаря <i>слаженной работе команды и личным достижениям</i>.\<br>\<br>\
+                Рейтинг формировался на основе данных об опыте руководителей в конкретном сегменте, результатах их работы, медийной активности и базовых показателях роста клиентов и объёма капитала подразделения.\<br>\<br>\
+                Ознакомиться подробнее с рейтингом можно по <a href="https://bosfera.ru/bo/bolshie-dengi-lyubyat-bolshuyu-tishinu">ссылке.</a>'
+            },
+            {
+                title: 'Реалист Банк повышает ставки по вкладам до 16,2% годовых',
+                date: '12 января 2024',
+                content: 'C 12 января 2024 года ставки по вкладам для физических лиц в Реалист Банке повысились.\<br>\<br>\
+                Ставка по вкладу «<b>Классический</b>» выросла с 12,5 до 16,2% при сроке размещения в 181 день. Минимальная сумма вклада — 10 тысяч рублей. Без возможности досрочного снятия или пополнения средств. Проценты выплачиваются в конце срока.\<br>\<br>\
+                Ставка по вкладу «<b>Пополняемый</b>» выросла до 14% годовых при размещении на 370 дней. Минимальная сумма вклада — 50 тысяч рублей. Без возможности досрочного или частичного снятия средств, но с пополнением в течение 90 дней. Проценты начисляются ежемесячно.\<br>\<br>\
+                Выросли ставки и по вкладу «<b>Универсальный</b>», с плавающей доходностью в течение всего срока размещения и льготными условиями расторжения. Максимальная ставка увеличилась до 16,2% годовых при размещении на 181 день. Минимальная ставка вклада — 8% годовых при сроке размещения в 1095 дней. Проценты выплачиваются ежемесячно. Минимальная сумма вклада составляет 50 тысяч рублей. Без возможности снятия или пополнения.'
+            },
+            {
+                title: 'Реалист Банк сообщает о реорганизации',
+                date: '28 декабря 2023',
+                content: 'В рамках планового развития Реалист Банк рад сообщить о предстоящей <i>реорганизации</i>. Это усилит позиции банка на рынке и позволит увеличить объёмы предоставления финансовых услуг для клиентов реального сектора экономики России.\<br>\<br>\
+                Реалист Банк сохранит все обязательства и продолжит обеспечивать высокий уровень обслуживания и наиболее выгодные условия для клиентов.'
+            },
+            {
+                title: 'Реалист Банк победил в номинации «Лучший лизинговый продукт в России»',
+                date: '18 декабря 2023',
+                content: 'В этом году в Национальной банковской премии Реалист Банк победил в номинации «<b>Лучший лизинговый продукт в России</b>» среди 54 компаний-участников.\<br>\<br>\
+                В течение года Реалист Банк активно развивал лизинговое направление: получил награду за развитие лизинга в сегменте МСП и занял 16 место по объёму нового бизнеса с МСБ в разрезе спецтехникиросли в рейтингах «Эксперт РА». К концу года мы стали лучшими в этой сфере в России.\<br>\<br>\
+                «<i>Для нас эта награда очень значима, поскольку Реалист Банк – один из немногих банков, который занимается лизингом для малого и среднего бизнеса. Соревнуясь с другими банками и лизинговыми компаниями, мы постоянно следим за трендами на рынке, что позволяет давать клиентам лучший сервис и продукт. На текущий момент у нас одно из самых быстрых одобрений на рынке – от одного дня, поэтому клиенты часто выбирают нас за гибкость и скорость</i>», - прокомментировал Денис Анисимов, Директор департамента кредитных и лизинговых операций Реалист Банка.\<br>\<br>\
+                Организаторы премии - Ассоциация российских банков и Национальный банковский журнал NBJ. Церемония награждения победителей состоялась 14 декабря в Москве. В 2023 году было заявлено рекордное количество проектов — 130, а также победителей — 38.'
+            },
+            {
+                title: 'Реалист Банк выпустил премиальные карты Mir Supreme',
+                date: '21 ноября 2023',
+                content: 'Премиальная банковская карта объединила в себе специальные условия обслуживания: от кешбэка и дохода на остаток до бесплатного доступа в бизнес-залы аэропортов и железнодорожных станций по всей России и за рубежом с помощью сервиса Mir Pass.\<br>\<br>\
+                Выгодные предложения держателям карт Mir Supreme также доступны по программе лояльности «Привет!)», в том числе кешбэк в легендарных ресторанах, за поездки в такси премиального класса и тд. Более подробная информация об акциях доступна на <a href="https://privetmir.ru/">сайте.</a>\<br>\<br>\
+                Оформить карту можно вип-клиентам, обратившись в любое отделение Реалист Банка, где совершается обслуживание физических лиц. Срок изготовления карты – от 5 до 10 рабочих дней.'
+            },
+            {
+                title: 'Реалист Банк повышает ставки по вкладам до 14% годовых',
+                date: '1 ноября 2023',
+                content: 'C 1 ноября 2023 года ставки по вкладам для физических лиц в Реалист Банке повысились. Ставка по вкладу «<b>Надёжный</b>» выросла до 13,5% годовых при размещении на 1095 дней. Минимальная сумма вклада — 100 тысяч рублей. Без возможности досрочного снятия или пополнения средств. Проценты выплачиваются в конце срока.\<br>\<br>\
+                Выросли ставки и по вкладу «<b>Универсальный</b>», с плавающей доходностью в течение всего срока размещения и льготными условиями расторжения. Максимальная ставка увеличилась до 14% годовых при размещении на 181 день. Минимальная ставка вклада — 8% годовых при сроке размещения в 1095 дней. Проценты выплачиваются ежемесячно. Минимальная сумма вклада составляет 50 тысяч рублей. Без возможности снятия или пополнения.'
+            },
+
+        ];
+
+        function openModal(index) {
+            const modal = document.getElementById('myModal');
+            const modalTitle = modal.querySelector('.modal-title');
+            const modalDate = modal.querySelector('.modal-date');
+            const modalText = modal.querySelector('.modal-text');
+            modalTitle.textContent = newsData[index].title;
+            modalDate.textContent = newsData[index].date;
+            modalText.innerHTML = newsData[index].content;
+            modal.style.display = 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const blocks = document.querySelectorAll('.block');
+            blocks.forEach((block, index) => {
+                block.addEventListener('click', function() {
+                    openModal(index);
+                });
+            });
+
+            // Закрытие модального окна при клике на кнопку "Закрыть"
+            const closeModalButton = document.querySelector('.close');
+            closeModalButton.addEventListener('click', function() {
+                const modal = document.getElementById('myModal');
+                modal.style.display = 'none';
+            });
+        });
+    </script>
+    <style>
+
+        .block {
+            position: relative; /* Используем относительное позиционирование */
+            padding: 20px;
+            width: 400px; /* Увеличиваем ширину для четвертого блока */
+            text-align: left;
+            border-radius: 10px; /* Закругляем углы */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Добавляем тень */
+            transition: transform 0.3s ease; /* Плавное изменение размера при наведении */
+        }
+
+        .block-news1 {
+            position: absolute; 
+            background-color: #f6f6f6;
+            color: black;
+            font-family: 'Rubik', sans-serif;
+            top: 400px;
+            left: 250px;
+            width: 260px;
+            height: 400px;
+            cursor: pointer;
+        }
+
+        .block-news2 {
+            position: absolute; 
+            background-color: #f6f6f6;
+            color: black;
+            font-family: 'Rubik', sans-serif;
+            top: 515px;
+            left: 622px;
+            width: 260px;
+            height: 400px;
+            cursor: pointer;
+        }
+
+        .block-news3 {
+            position: absolute; 
+            background-color: #f6f6f6;
+            color: black;
+            font-family: 'Rubik', sans-serif;
+            top: 515px;
+            left: 990px;
+            width: 260px;
+            height: 400px;
+            cursor: pointer;
+        }
+
+        .block-news4 {
+            position: absolute; 
+            background-color: #f6f6f6;
+            color: black;
+            font-family: 'Rubik', sans-serif;
+            top: 515px;
+            left: 1360px;
+            width: 260px;
+            height: 400px;
+            cursor: pointer;
+        }
+
+        .block-news5 {
+            position: absolute;
+            background-color: #f6f6f6;
+            color: black;
+            font-family: 'Rubik', sans-serif;
+            top: 1000px;
+            left: 250px;
+            width: 260px;
+            height: 400px;
+            cursor: pointer;
+        }
+
+        .block-news6 {
+            position: absolute; 
+            background-color: #f6f6f6;
+            color: black;
+            font-family: 'Rubik', sans-serif;
+            top: 1000px;
+            left: 622px;
+            width: 260px;
+            height: 400px;
+            cursor: pointer;
+        }
+
+        .block-news7 {
+            position: absolute; 
+            background-color: #f6f6f6;
+            color: black;
+            font-family: 'Rubik', sans-serif;
+            top: 1000px;
+            left: 990px;
+            width: 260px;
+            height: 400px;
+            cursor: pointer;
+        }
+
+        .block-news8 {
+            position: absolute; 
+            background-color: #f6f6f6;
+            color: black;
+            font-family: 'Rubik', sans-serif;
+            top: 1000px;
+            left: 1360px;
+            width: 260px;
+            height: 400px;
+            cursor: pointer;
+        }
+
+        .block-news9 {
+            position: absolute; 
+            background-color: #f6f6f6;
+            color: black;
+            font-family: 'Rubik', sans-serif;
+            top: 1485px;
+            left: 250px;
+            width: 260px;
+            height: 400px;
+            cursor: pointer;
+        }
+
+        .block-news10 {
+            position: absolute; 
+            background-color: #f6f6f6;
+            color: black;
+            font-family: 'Rubik', sans-serif;
+            top: 1485px;
+            left: 622px;
+            width: 260px;
+            height: 400px;
+            cursor: pointer;
+        }
+
+        .block-news11 {
+            position: absolute; /* Используем относительное позиционирование */
+            background-color: #f6f6f6;
+            color: black;
+            font-family: 'Rubik', sans-serif;
+            top: 1485px;
+            left: 990px;
+            width: 260px;
+            height: 400px;
+            cursor: pointer;
+        }
+
+        .block-news12 {
+            position: absolute; /* Используем относительное позиционирование */
+            background-color: #f6f6f6;
+            color: black;
+            font-family: 'Rubik', sans-serif;
+            top: 1485px;
+            left: 1360px;
+            width: 260px;
+            height: 400px;
+            cursor: pointer;
+        }
+
+        .black-block-down {
+            background-color: #f6f6f6;
+            border: #1D4E9E solid 2px;
+            color: black;
+            font-family: 'Rubik', sans-serif;
+            top: -20px;
+            left: 710px;
+            width: 260px;
+            height: 400px;
+            cursor: pointer;
+        }
+
+        /* При наведении меняем размер блока */
+        .block:hover {
+            transform: scale(1.05);
+            box-shadow: 4px 10px 20px rgba(0, 0, 0, 0.3); /* Добавляем тень */
+        }
+
+        .text-container {
+            position: absolute;
+            font-family: 'Rubik', sans-serif;
+            top: 200px;
+            left: 50%; /* Центрируем начальное положение */
+            transform: translateX(-50%); /* Центрируем по горизонтали */
+            text-align: center; /* Выравниваем текст по центру */
+            color: black;
+            font-size: 90px;
+        }
+
+        .text-container div:nth-child(2) {
+            color: black; /* Цвет остального текста */
+            font-size: 90px;
+        }
+        .text-container div:nth-child(3) {
+            color: black; /* Цвет остального текста */
+            font-size: 90px;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif; /* Устанавливаем шрифт Roboto */
+        }
+        .bluetext {
+            color: #1D4E9E;
+            font-weight: bold;
+        }
+
+        /* Стили для текста */
+        /* Стили для текста */
+        .typed-text {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 0.08em solid #000; /* Создаем мигающий курсор печати */
+            animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #000; }
+        }
+        .activity_first {
+            position: absolute;
+            margin-right: 0px;
+            margin-top: -30px;
+            margin-left: 230px;
+            z-index: 2;
+        }
+        .activity_first2 {
+            position: absolute;
+            margin-right: 0px;
+            margin-top: -38px;
+            margin-left: 240px;
+            z-index: 2;
+        }
+        .activity_first3 {
+            position: absolute;
+            margin-right: 0px;
+            margin-top: -30px;
+            margin-left: 260px;
+            z-index: 2;
+        }
+        .activity_first4 {
+            position: absolute;
+            margin-right: 0px;
+            margin-top: -20px;
+            margin-left: 260px;
+            z-index: 2;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            margin: 15% auto;
+            padding: 20px;
+            border: 2px solid #888;
+            width: 80%;
+            background-color: #f0f8ff; /* Голубой фон */
+            border-radius: 20px;
+        }
+
+        .modal-title {
+            font-size: 40px; /* Размер шрифта для текста в модальном окне */
+            color: #333; /* Цвет текста в модальном окне */
+            font-family: 'Montserrat', sans-serif; /* Устанавливаем шрифт Montserrat */
+        }
+
+        .modal-text {
+            font-size: 20px; /* Размер шрифта для текста в модальном окне */
+            color: #333; /* Цвет текста в модальном окне */
+            font-family: 'Montserrat', sans-serif; /* Устанавливаем шрифт Montserrat */
+            text-align: justify; /* Выравнивание текста по ширине */
+        }
+        
+        .modal-date {
+            color: #666; /* Цвет для даты */
+            text-align: right;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 48px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <header class="buttons-container">
+        <a href="../site/main-page.html" class="header_logo">
+            <img src="https://realistbank.ru/local/media-new-template/images/logo.svg" alt="Реалист банк">
+        </a>
+        <button class="button" onmouseover="showMenu(this)" onmouseout="hideMenu(this)">
+            О компании
+            <div class="dropdown">
+                <a href="about.html">Наша деятельность</a><br>
+                <a href="history.html">История банка</a><br>
+                <a href="team.html">Наша команда</a>
+            </div>
+        </button>
+        <button class="button" onclick="">Новости</button>
+        <button class="button" onclick="">Курс валют</button>
+        <button class="button" onclick="">Контактные данные</button>
+        <button class="button" onclick="">Видео</button>
+    </header>
+    <main style="margin-bottom: 1500px;">
+        <div class="text-container">
+            <span id="typing-text-1" class="typed-text"></span>
+            <!-- <div>Наша <span class="chukaeva">деятельность</span></div> -->
+        </div>
+        <div class="block block-news1" style="position: relative;">
+            <p style="font-size: 13px; color: #999999;">27 апреля 2024</p>
+            <p style="font-size: 16px;"><b>Сайт Реалист Банка вошел в ТОП-30 сайтов кредитных организаций</b></p>
+            <p style="font-size: 14px; color: #999999; position: absolute; bottom: 10px; right: 10px;">Узнать больше &#9473;&#9658;</p>
+        </div>
+        <div class="block block-news2">
+            <p style="font-size: 13px; color: #999999;">21 марта 2024</p>
+            <p style="font-size: 16px;"><b>Реалист Банк занял 25 место в рейтинге АФК по итогам 2023 года</b></p>
+            <p style="font-size: 14px; color: #999999; position: absolute; bottom: 10px; right: 10px;">Узнать больше &#9473;&#9658;</p>
+        </div>
+        <div class="block block-news3">
+            <p style="font-size: 13px; color: #999999;">21 марта 2024</p>
+            <p style="font-size: 16px;"><b>Реалист Банк 16 место по портфелю кредитов МБ в рэнкинге «Эксперт РА»</b></p>
+            <p style="font-size: 14px; color: #999999; position: absolute; bottom: 10px; right: 10px;">Узнать больше &#9473;&#9658;</p>
+        </div>
+        <div class="block block-news4">
+            <p style="font-size: 13px; color: #999999;">18 марта 2024</p>
+            <p style="font-size: 16px;"><b>Реалист Банк стал членом Объединённой Лизинговой Ассоциации</b></p>
+            <p style="font-size: 14px; color: #999999; position: absolute; bottom: 10px; right: 10px;">Узнать больше &#9473;&#9658;</p>
+        </div>
+        <div class="block block-news5">
+            <p style="font-size: 13px; color: #999999;">28 февраля 2024</p>
+            <p style="font-size: 16px;"><b>Реалист Банк вошёл в ТОП-5 банковских каналов по суточной вовлечённости в Telegram</b></p>
+            <p style="font-size: 14px; color: #999999; position: absolute; bottom: 10px; right: 10px;">Узнать больше &#9473;&#9658;</p>
+        </div>
+        <div class="block block-news6">
+            <p style="font-size: 13px; color: #999999;">20 февраля 2024</p>
+            <p style="font-size: 16px;"><b>НРА повысило прогноз по рейтингу Реалист Банка до «позитивного»</b></p>
+            <p style="font-size: 14px; color: #999999; position: absolute; bottom: 10px; right: 10px;">Узнать больше &#9473;&#9658;</p>
+        </div>
+        <div class="block block-news7">
+            <p style="font-size: 13px; color: #999999;">6 февраля 2024</p>
+            <p style="font-size: 16px;"><b>Реалист Банк вошёл в ТОП-10 руководителей российского сегмента private banking</b></p>
+            <p style="font-size: 14px; color: #999999; position: absolute; bottom: 10px; right: 10px;">Узнать больше &#9473;&#9658;</p>
+        </div>
+        <div class="block block-news8">
+            <p style="font-size: 13px; color: #999999;">12 января 2024</p>
+            <p style="font-size: 16px;"><b>Реалист Банк повышает ставки по вкладам до 16,2% годовых</b></p>
+            <p style="font-size: 14px; color: #999999; position: absolute; bottom: 10px; right: 10px;">Узнать больше &#9473;&#9658;</p>
+        </div>
+        <div class="block block-news9">
+            <p style="font-size: 13px; color: #999999;">28 декабря 2023</p>
+            <p style="font-size: 16px;"><b>Реалист Банк сообщает о реорганизации</b></p>
+            <p style="font-size: 14px; color: #999999; position: absolute; bottom: 10px; right: 10px;">Узнать больше &#9473;&#9658;</p>
+        </div>
+        <div class="block block-news10">
+            <p style="font-size: 13px; color: #999999;">18 декабря 2023</p>
+            <p style="font-size: 16px;"><b>Реалист Банк победил в номинации «Лучший лизинговый продукт в России»</b></p>
+            <p style="font-size: 14px; color: #999999; position: absolute; bottom: 10px; right: 10px;">Узнать больше &#9473;&#9658;</p>
+        </div>
+        <div class="block block-news11">
+            <p style="font-size: 13px; color: #999999;">21 ноября 2023</p>
+            <p style="font-size: 16px;"><b>Реалист Банк выпустил премиальные карты Mir Supreme</b></p>
+            <p style="font-size: 14px; color: #999999; position: absolute; bottom: 10px; right: 10px;">Узнать больше &#9473;&#9658;</p>
+        </div>
+        <div class="block block-news12">
+            <p style="font-size: 13px; color: #999999;">1 ноября 2023</p>
+            <p style="font-size: 16px;"><b>Реалист Банк повышает ставки по вкладам до 14% годовых</b></p>
+            <p style="font-size: 14px; color: #999999; position: absolute; bottom: 10px; right: 10px;">Узнать больше &#9473;&#9658;</p>
+        </div>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 class="modal-title"></h2>
+                <p class="modal-text"></p>
+                <p class="modal-date"></p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        &copy; Чукаев Роман, ФБИ-24, 2 курс, 2024
+    </footer>
+</body>
+</html>

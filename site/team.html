@@ -101,10 +101,17 @@
         // Функция для закрытия модального окна
         function closeModal(submitClicked, event) {
             if (submitClicked) {
-                console.log("Модальное окно закрывается после отправки заявки"); // Отладочный вывод
-                event.stopPropagation(); // Предотвращение всплытия
-                document.getElementById("successMessage").innerText = "Ваша заявка отправлена! Свяжемся с вами в течение дня";
-                document.getElementById("successMessage").style.display = "block";
+                numberlenght = document.getElementById("phone").value.length;
+                if (numberlenght == 12) {
+                    console.log("Модальное окно закрывается после отправки заявки"); // Отладочный вывод
+                    event.stopPropagation(); // Предотвращение всплытия
+                    document.getElementById("successMessage").innerText = "Ваша заявка отправлена! Свяжемся с вами в течение дня";
+                    document.getElementById("successMessage").style.display = "block";
+                } else {
+                    console.log("Модальное окно закрывается после отправки заявки"); // Отладочный вывод
+                    event.stopPropagation(); // Предотвращение всплытия
+                    alert("Пожалуйста, введите корректный номер телефона.")
+                }
             } else {
                 console.log("Модальное окно закрывается без отправки заявки"); // Отладочный вывод
                 event.stopPropagation(); // Предотвращение всплытия
@@ -127,6 +134,14 @@
             secondImage.scrollIntoView({ behavior: 'smooth' });
         }
 
+        function showPlus7(input) {
+        input.value = '+7';
+    }
+
+        // Функция для перенаправления на страницу новостей
+        function redirectToNewsPage() {
+                window.location.href = "news.html";
+        }
     </script>
     <style>
         .block {
@@ -280,26 +295,12 @@
             margin-left: 70px;
             z-index: 2;
         }
-        .activity_first3 {
-            position: absolute;
-            margin-right: 0px;
-            margin-top: -30px;
-            margin-left: 260px;
-            z-index: 2;
-        }
-        .activity_first4 {
-            position: absolute;
-            margin-right: 0px;
-            margin-top: -70px;
-            margin-left: 260px;
-            z-index: 2;
-        }
 
         main {
             margin-bottom: 700px; /* Добавляем отступ внизу страницы */
         }
         .button1::after {
-        content: ""; /* Обязательно добавляем содержимое для псевдоэлемента */
+        content: ""; /* добавляем содержимое для псевдоэлемента */
         position: absolute; /* Абсолютное позиционирование относительно родительского элемента */
         bottom: -30px; /* Располагаем псевдоэлемент ниже кнопки */
         left: 50%; /* Располагаем псевдоэлемент в середине кнопки */
@@ -381,8 +382,9 @@
             background-color: #fefefe;
             margin: 15% auto; /* Центрируем модальное окно по вертикали и горизонтали */
             padding: 20px;
-            border: 1px solid #888;
+            border: 2px solid #888;
             width: 20%;
+            border-radius: 20px;
         }
 
         /* Стили для кнопки закрытия модального окна */
@@ -414,7 +416,7 @@
                 <a href="team.html">Наша команда</a>
             </div>
         </button>
-        <button class="button" onclick="">Новости</button>
+        <button class="button" onclick="redirectToNewsPage()">Новости</button>
         <button class="button" onclick="">Курс валют</button>
         <button class="button" onclick="">Контактные данные</button>
         <button class="button" onclick="">Видео</button>
@@ -452,10 +454,10 @@
                     <span class="close" onclick="closeModal(false, event)">&times;</span>
                     <form>
                         <label for="fname">ФИО:</label><br>
-                        <input type="text" id="fname" name="fname"><br>
+                        <input type="text" id="fname" name="fname" placeholder="Иванов Иван Иванович"><br><br>
                         <label for="phone">Номер телефона:</label><br>
-                        <input type="text" id="phone" name="phone"><br><br>
-                        <input type="submit" id="submitBtn" value="Отправить">
+                        <input type="tel" id="phone" name="phone" placeholder="+7-999-999-99-99" maxlength="12" onfocus="showPlus7(this)"><br><br>
+                        <input type="submit" id="submitBtn" value="Отправить" style="cursor: pointer">
                     </form>
                 <div id="successMessage" style="display: none; color: green; margin-top: 10px;"></div>
             </div>
