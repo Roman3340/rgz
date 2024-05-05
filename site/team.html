@@ -142,6 +142,9 @@
         function redirectToNewsPage() {
                 window.location.href = "news.html";
         }
+        function redirectToCalcPage() {
+            window.location.href = "calc.html";
+        }
     </script>
     <style>
         .block {
@@ -175,7 +178,6 @@
             left: 1110px;
             width: 550px;
             height: 400px;
-            cursor: pointer;
             z-index: 3;
         }
 
@@ -417,7 +419,7 @@
             </div>
         </button>
         <button class="button" onclick="redirectToNewsPage()">Новости</button>
-        <button class="button" onclick="">Курс валют</button>
+        <button class="button" onclick="redirectToCalcPage()">Курс валют</button>
         <button class="button" onclick="">Контактные данные</button>
         <button class="button" onclick="">Видео</button>
     </header>

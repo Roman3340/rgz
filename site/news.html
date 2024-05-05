@@ -190,6 +190,14 @@
                 modal.style.display = 'none';
             });
         });
+
+        function redirectToNewsPage() {
+            window.location.href = "news.html";
+        }
+        
+        function redirectToCalcPage() {
+            window.location.href = "calc.html";
+        }
     </script>
     <style>
 
@@ -507,8 +515,8 @@
                 <a href="team.html">Наша команда</a>
             </div>
         </button>
-        <button class="button" onclick="">Новости</button>
-        <button class="button" onclick="">Курс валют</button>
+        <button class="button" onclick="redirectToNewsPage()">Новости</button>
+        <button class="button" onclick="redirectToCalcPage()">Курс валют</button>
         <button class="button" onclick="">Контактные данные</button>
         <button class="button" onclick="">Видео</button>
     </header>

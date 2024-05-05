@@ -1,0 +1,376 @@
+КАЛЬКУЛЯТОР
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АО "РЕАЛИСТ БАНК" - услуги банка для среднего и малого бизнеса</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon/favicon-16x16.png">
+    <link rel="icon" href="../favicon/favicon-32x32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap">
+    <script>
+        let i = 0; // Глобальная переменная для отслеживания текущего индекса символа
+    
+        document.addEventListener("DOMContentLoaded", typeWriterEffect);
+
+        function typeWriterEffect() {
+            const texts = [
+                "Курс валют на сегодня"
+            ];
+
+            let index = 0; // Индекс текущего текста
+            let i = 0; // Индекс текущего символа
+
+            function type() {
+                if (i < texts[index].length) {
+                    document.getElementById("typing-text-1").innerHTML += texts[index].charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    setTimeout(erase, 1000); // После печати текста, стираем его через 1 секунду
+                }
+            }
+
+            function erase() {
+                let j = texts[index].length - 1;
+                const speed = 50; // Скорость стирания
+
+                function eraseText() {
+                    if (j >= 0) {
+                        let newText = texts[index].substring(0, j);
+                        document.getElementById("typing-text-1").innerHTML = newText;
+                        j--;
+                        setTimeout(eraseText, speed);
+                    } else {
+                        // После стирания текста, переходим к следующему тексту
+                        index++;
+                        i = 0; // Сброс индекса символа
+                        if (index >= texts.length) {
+                            // Если это был последний текст, начинаем сначала
+                            index = 0;
+                        }
+                        // Начинаем печать следующего текста
+                        setTimeout(type, 1000);
+                    }
+                }
+
+                eraseText(); // Начинаем стирать текст
+            }
+
+            const speed = 150; // Скорость печати
+            type(); // Запускаем анимацию печати
+        }
+
+        function showMenu(button) {
+            button.querySelector('.dropdown').style.maxHeight = '200px';
+            button.querySelector('.dropdown').style.opacity = '1';
+        }
+
+        function hideMenu(button) {
+            button.querySelector('.dropdown').style.maxHeight = '0';
+            button.querySelector('.dropdown').style.opacity = '0';
+        }
+        
+        // Функция для перенаправления на страницу новостей
+        function redirectToNewsPage() {
+            window.location.href = "news.html";
+        }
+        function redirectToCalcPage() {
+            window.location.href = "calc.html";
+        }
+
+        // Функция для получения текущей даты
+        // Функция для получения текущей даты
+        function getCurrentDate() {
+            const today = new Date();
+            const date = today.toLocaleDateString('ru-RU');
+            return date;
+        }
+
+        // Функция для получения курсов валют
+        function getExchangeRates() {
+            fetch('https://www.cbr-xml-daily.ru/daily_json.js')
+                .then(response => response.json())
+                .then(data => {
+                    const rubToUsd = data.Valute.USD.Value.toFixed(2);
+                    const rubToEur = data.Valute.EUR.Value.toFixed(2);
+                    const rubToByn = data.Valute.BYN.Value.toFixed(2);
+
+                    document.getElementById('rub-to-usd').textContent = rubToUsd;
+                    document.getElementById('rub-to-eur').textContent = rubToEur;
+                    document.getElementById('rub-to-byn').textContent = rubToByn;
+                })
+                .catch(error => console.error('Ошибка получения данных:', error));
+        }
+
+        // Функция для конвертации валюты
+        function convertCurrency() {
+            const rublesInput = document.getElementById('rubles');
+            const rubles = parseFloat(rublesInput.value);
+            if (isNaN(rubles) || rubles <= 0) {
+                alert('Введите корректное значение в поле "Сумма в рублях"');
+                return;
+            }
+            const fromCurrency = document.getElementById('fromCurrency').value;
+            const toCurrency = document.getElementById('toCurrency').value;
+            
+            if (fromCurrency === toCurrency) {
+                alert('Выберите разные валюты для конвертации');
+                return;
+            }
+
+            // Получаем курсы валют
+            const rubToUsd = parseFloat(document.getElementById('rub-to-usd').textContent);
+            const rubToEur = parseFloat(document.getElementById('rub-to-eur').textContent);
+            const rubToByn = parseFloat(document.getElementById('rub-to-byn').textContent);
+
+            // Выполняем конвертацию в зависимости от выбранных валют
+            let result;
+            if (fromCurrency === 'rub') {
+                if (toCurrency === 'usd') {
+                    result = rubles / rubToUsd;
+                } else if (toCurrency === 'eur') {
+                    result = rubles / rubToEur;
+                } else if (toCurrency === 'byn') {
+                    result = rubles / rubToByn;
+                }
+            } else if (toCurrency === 'rub') {
+                if (fromCurrency === 'usd') {
+                    result = rubles * rubToUsd;
+                } else if (fromCurrency === 'eur') {
+                    result = rubles * rubToEur;
+                } else if (fromCurrency === 'byn') {
+                    result = rubles * rubToByn;
+                }
+            } else {
+                if (fromCurrency === 'usd') {
+                    result = rubles * (1 / rubToUsd) * rubToEur;
+                } else if (fromCurrency === 'eur') {
+                    result = rubles * (1 / rubToEur) * rubToUsd;
+                } else if (fromCurrency === 'byn') {
+                    result = rubles * (1 / rubToByn) * rubToUsd;
+                }
+            }
+
+            document.getElementById('result').textContent = `${rubles} ${fromCurrency.toUpperCase()} равно ${result.toFixed(2)} ${toCurrency.toUpperCase()}`;
+        }
+
+        // Добавьте вызов getExchangeRates() перед вызовом convertCurrency()
+        function convertCurrency() {
+            getExchangeRates(); // Обновление курсов валют перед конвертацией
+            // Остальной код функции convertCurrency() остается без изменений
+        }
+
+
+        // После загрузки страницы запускаем функцию получения курсов валют
+        document.addEventListener('DOMContentLoaded', () => {
+            getExchangeRates();
+            document.getElementById('current-date').textContent = getCurrentDate();
+        });
+    </script>
+    <style>
+        .block {
+            position: relative; /* Используем относительное позиционирование */
+            padding: 20px;
+            width: 400px; /* Увеличиваем ширину для четвертого блока */
+            text-align: left;
+            border-radius: 10px; /* Закругляем углы */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Добавляем тень */
+            transition: transform 0.3s ease; /* Плавное изменение размера при наведении */
+        }
+
+
+        .text-container {
+            position: absolute;
+            font-family: 'Rubik', sans-serif;
+            top: 200px;
+            left: 50%; /* Центрируем начальное положение */
+            transform: translateX(-50%); /* Центрируем по горизонтали */
+            text-align: center; /* Выравниваем текст по центру */
+            color: black;
+            font-size: 90px;
+        }
+
+        .text-container div:nth-child(2) {
+            color: black; /* Цвет остального текста */
+            font-size: 90px;
+        }
+        .text-container div:nth-child(3) {
+            color: black; /* Цвет остального текста */
+            font-size: 90px;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif; /* Устанавливаем шрифт Roboto */
+        }
+        .bluetext {
+            color: #1D4E9E;
+            font-weight: bold;
+        }
+
+        /* Стили для текста */
+        /* Стили для текста */
+        .typed-text {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 0.08em solid #000; /* Создаем мигающий курсор печати */
+            animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #000; }
+        }
+        body {
+            font-family: 'Rubik', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #F0F0F0;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .left-block {
+            margin-left: 530px;
+            padding-right: 20px;
+            color: #1D4E9E;
+            width: 250px;
+            height: 300px;
+        }
+
+        .right-block {
+            margin-right: 530px;
+            padding-left: 20px;
+            color: #1D4E9E;
+            width: 500px;
+            height: 300px;
+        }
+
+        .calculator {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .calculator h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group input {
+            padding: 10px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .input-group select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #1D4E9E;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #134074;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="buttons-container">
+        <a href="../site/main-page.html" class="header_logo">
+            <img src="https://realistbank.ru/local/media-new-template/images/logo.svg" alt="Реалист банк">
+        </a>
+        <button class="button" onmouseover="showMenu(this)" onmouseout="hideMenu(this)">
+            О компании
+            <div class="dropdown">
+                <a href="about.html">Наша деятельность</a><br>
+                <a href="history.html">История банка</a><br>
+                <a href="team.html">Наша команда</a>
+            </div>
+        </button>
+        <button class="button" onclick="redirectToNewsPage()">Новости</button>
+        <button class="button" onclick="">Курс валют</button>
+        <button class="button" onclick="">Контактные данные</button>
+        <button class="button" onclick="">Видео</button>
+    </header>
+    <main>
+        <div class="text-container">
+            <span id="typing-text-1" class="typed-text"></span>
+            <!-- <div>Наша <span class="chukaeva">деятельность</span></div> -->
+        </div>
+        <div class="container">
+            <div class="left-block" style="margin-top: 400px; border: #888 5px solid; border-radius: 10px; text-align: center;">
+                <h2>Курс валют на сегодня</h2>
+                <p>Дата: <span id="current-date"></span></p>
+                <p>Рубль к доллару: <span id="rub-to-usd"></span></p>
+                <p>Рубль к евро: <span id="rub-to-eur"></span></p>
+                <p>Рубль к белорусскому рублю: <span id="rub-to-byn"></span></p>
+            </div>
+            <div class="right-block" style="margin-top: 400px;">
+                <div class="calculator">
+                    <h2>Калькулятор валют</h2>
+                    <div class="input-group">
+                        <input type="number" id="rubles" placeholder="Введите сумму в рублях">
+                        <select id="fromCurrency">
+                            <option value="rub">RUB</option>
+                            <option value="usd">USD</option>
+                            <option value="eur">EUR</option>
+                            <option value="byn">BYN</option>
+                        </select>
+                        <select id="toCurrency">
+                            <option value="usd">USD</option>
+                            <option value="eur">EUR</option>
+                            <option value="byn">BYN</option>
+                            <option value="rub">RUB</option>
+                        </select>
+                    </div>
+                    <button onclick="convertCurrency()">Конвертировать</button>
+                    <div id="result"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        &copy; Чукаев Роман, ФБИ-24, 2 курс, 2024
+    </footer>
+</body>
+</html>

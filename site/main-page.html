@@ -24,12 +24,35 @@
         function redirectToNewsPage() {
             window.location.href = "news.html";
         }
+        function redirectToCalcPage() {
+            window.location.href = "calc.html";
+        }
     </script>
     <style>
-        .mainpagelogo {
+        .mainpagelogo_arm {
             position: absolute;
-            margin-top: 50px;
+            top: 610px;
             margin-right: 10px;
+        }
+        .mainpagelogo_planet {
+            position: absolute;
+            top: 310px;
+            margin-left: 530px;
+        }
+        .mainpagelogo_coin1 {
+            position: absolute;
+            top: 310px;
+            margin-left: 340px;
+        }
+        .mainpagelogo_coin2 {
+            position: absolute;
+            top: 510px;
+            margin-left: 400px;
+        }
+        .mainpagelogo_coin3 {
+            position: absolute;
+            top: 310px;
+            margin-left: 840px;
         }
         .text-container {
         position: absolute;
@@ -60,6 +83,41 @@
         font-weight: bold;
         }
         
+        @keyframes flyUpDownSlow {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-40px);
+            }
+        }
+
+        @keyframes flyUpDownFast {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+        
+
+        .mainpagelogo_planet {
+            animation: flyUpDownSlow 4s infinite ease-in-out alternate; /* Применяем анимацию с медленной скоростью */
+        }
+
+        .mainpagelogo_coin1 {
+            animation: flyUpDownFast 5s infinite ease-in-out alternate; /* Применяем анимацию с быстрой скоростью */
+        }
+
+        .mainpagelogo_coin2 {
+            animation: flyUpDownFast 4s infinite ease-in-out alternate; /* Применяем анимацию с быстрой скоростью */
+        }
+
+        .mainpagelogo_coin3 {
+            animation: flyUpDownFast 3s infinite ease-in-out alternate; /* Применяем анимацию с быстрой скоростью */
+        }
+
     </style>
 </head>
 <body>
@@ -76,12 +134,16 @@
             </div>
         </button>
         <button class="button" onclick="redirectToNewsPage()">Новости</button>
-        <button class="button" onclick="">Курс валют</button>
+        <button class="button" onclick="redirectToCalcPage()">Курс валют</button>
         <button class="button" onclick="">Контактные данные</button>
         <button class="button" onclick="">Видео</button>
     </header>
     <main>
-        <img class="mainpagelogo" src="../images/main_swipper_planet_left.webp">
+        <img class="mainpagelogo_arm" src="../images/planet_arm2.png">
+        <img class="mainpagelogo_planet" src="../images/planet1.png">
+        <img class="mainpagelogo_coin1" src="../images/planet_coin1.png">
+        <img class="mainpagelogo_coin2" src="../images/planet_coin2.png">
+        <img class="mainpagelogo_coin3" src="../images/planet_coin3.png">
         <div class="text-container">
             <div class="best-bank">ЛУЧШИЙ БАНК</div>
             <div>по мнению</div>
