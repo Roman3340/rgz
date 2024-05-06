@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АО "РЕАЛИСТ БАНК" - контактные данные</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon/favicon-16x16.png">
+    <link rel="icon" href="../favicon/favicon-32x32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Days+One&display=swap" rel="stylesheet">
+
+    <script>
+        var activeLabelId = 'branches'; // Переменная для хранения ID активной надписи
+
+        function showMenu(button) {
+            button.querySelector('.dropdown').style.maxHeight = '200px';
+            button.querySelector('.dropdown').style.opacity = '1';
+        }
+
+        function hideMenu(button) {
+            button.querySelector('.dropdown').style.maxHeight = '0';
+            button.querySelector('.dropdown').style.opacity = '0';
+        }
+
+        // Функция для перенаправления на страницу новостей
+        function redirectToNewsPage() {
+            window.location.href = "news.html";
+        }
+        function redirectToCalcPage() {
+            window.location.href = "calc.html";
+        }
+        function redirectToContactsPage() {
+            window.location.href = 'contacts.html'
+        }
+
+        function highlightLabel(labelId) {
+            if (activeLabelId !== labelId) { // Проверяем, не является ли текущая надпись уже активной
+                document.getElementById(activeLabelId).style.color = '#333'; // Возвращаем предыдущей активной надписи обычный цвет
+                document.getElementById(labelId).style.color = '#1D4E9E'; // Выделяем новую активную надпись
+                activeLabelId = labelId; // Обновляем переменную activeLabelId
+            }
+        }
+
+        function switchToATMs() {
+            highlightLabel('atms'); // Вызываем функцию highlightLabel для изменения цвета активной надписи
+            document.getElementById('map-iframe').src = "https://yandex.ru/map-widget/v1/?display-text=%D0%A0%D0%B5%D0%B0%D0%BB%D0%B8%D1%81%D1%82%20%D0%91%D0%B0%D0%BD%D0%BA%2C%20%D0%B1%D0%B0%D0%BD%D0%BA%D0%BE%D0%BC%D0%B0%D1%82%D1%8B&ll=37.648283%2C55.972103&mode=search&sll=37.648283%2C55.972103&sspn=2.566306%2C0.872907&text=%7B%22text%22%3A%22%D0%A0%D0%B5%D0%B0%D0%BB%D0%B8%D1%81%D1%82%20%D0%91%D0%B0%D0%BD%D0%BA%2C%20%D0%B1%D0%B0%D0%BD%D0%BA%D0%BE%D0%BC%D0%B0%D1%82%D1%8B%22%2C%22what%22%3A%5B%7B%22attr_name%22%3A%22chain_id%22%2C%22attr_values%22%3A%5B%2253188462079%22%5D%7D%5D%7D&z=9.62";
+        }
+
+        function switchToBranches() {
+            highlightLabel('branches'); // Вызываем функцию highlightLabel для изменения цвета активной надписи
+            document.getElementById('map-iframe').src = "https://yandex.ru/map-widget/v1/?display-text=%D0%A0%D0%B5%D0%B0%D0%BB%D0%B8%D1%81%D1%82%20%D0%91%D0%B0%D0%BD%D0%BA%2C%20%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F&ll=37.648283%2C55.972103&mode=search&sll=37.648283%2C55.972103&sspn=2.566306%2C0.872907&text=%7B%22text%22%3A%22%D0%A0%D0%B5%D0%B0%D0%BB%D0%B8%D1%81%D1%82%20%D0%91%D0%B0%D0%BD%D0%BA%2C%20%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%22%2C%22what%22%3A%5B%7B%22attr_name%22%3A%22chain_id%22%2C%22attr_values%22%3A%5B%2253188462079%22%5D%7D%5D%7D&z=9.62";
+        }
+    </script>
+    <style>
+
+        .titleContacts {
+            font-family: 'Rubik', sans-serif;
+            font-size: 45px;
+            color: #202020;
+            font-weight: 700;
+            margin-top: 120px;
+            margin-left: 300px;
+        }
+
+        /* Стили для текста */
+        /* Стили для текста */
+        .typed-text {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 0.08em solid #000; /* Создаем мигающий курсор печати */
+            animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #000; }
+        }
+        body {
+            font-family: 'Rubik', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .map-container {
+            position: absolute;
+            margin-top: 120px;
+            margin-left: 840px;
+            margin-bottom: 20px;
+            text-align: center; /* Центрирование текста */
+            cursor: pointer;
+        }
+
+        .map-label {
+            color: #000000;
+            font-size: 31px;
+            font-weight: bold;
+        }
+        .map-label:hover {
+            color: #4d82d8;
+            font-size: 31px;
+            font-weight: bold;
+        }
+
+        .map-label.active {
+            color: #1D4E9E;
+            font-weight: bold;
+            font-size: 31px;
+        }
+
+        .map-label.active:hover {
+            color: #4d82d8;
+            font-weight: bold;
+            font-size: 31px;
+        }
+
+        .separator {
+            font-size: 25px;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <header class="buttons-container">
+        <a href="../site/main-page.html" class="header_logo">
+            <img src="https://realistbank.ru/local/media-new-template/images/logo.svg" alt="Реалист банк">
+        </a>
+        <button class="button" onmouseover="showMenu(this)" onmouseout="hideMenu(this)">
+            О компании
+            <div class="dropdown">
+                <a href="about.html">Наша деятельность</a><br>
+                <a href="history.html">История банка</a><br>
+                <a href="team.html">Наша команда</a>
+            </div>
+        </button>
+        <button class="button" onclick="redirectToNewsPage()">Новости</button>
+        <button class="button" onclick="redirectToCalcPage()">Курс валют</button>
+        <button class="button" onclick="redirectToContactsPage()">Контактные данные</button>
+        <button class="button" onclick="">Видео</button>
+    </header>
+    <main>
+        <div class="titleContacts">Контакты</div>
+        <div class="map-container" style="cursor: pointer;">
+            <span id="branches" class="map-label active" onmouseover="highlightBranches()" onclick="switchToBranches()">Отделения</span>
+            <span class="separator">|</span>
+            <span id="atms" class="map-label" onmouseover="highlightATMs()" onclick="switchToATMs()">Банкоматы</span>
+        </div>    
+        <iframe id="map-iframe" style="margin-left: 420px; margin-top: 170px;" src="https://yandex.ru/map-widget/v1/?display-text=%D0%A0%D0%B5%D0%B0%D0%BB%D0%B8%D1%81%D1%82%20%D0%91%D0%B0%D0%BD%D0%BA%2C%20%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F&ll=37.648283%2C55.972103&mode=search&sll=37.648283%2C55.972103&sspn=2.566306%2C0.872907&text=%7B%22text%22%3A%22%D0%A0%D0%B5%D0%B0%D0%BB%D0%B8%D1%81%D1%82%20%D0%91%D0%B0%D0%BD%D0%BA%2C%20%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%22%2C%22what%22%3A%5B%7B%22attr_name%22%3A%22chain_id%22%2C%22attr_values%22%3A%5B%2253188462079%22%5D%7D%5D%7D&z=9.62" width="1200" height="600" frameborder="1" allowfullscreen="true"></iframe>
+    </main>
+    <footer>
+        &copy; Чукаев Роман, ФБИ-24, 2 курс, 2024
+    </footer>
+</body>
+</html>

@@ -145,6 +145,9 @@
         function redirectToCalcPage() {
             window.location.href = "calc.html";
         }
+        function redirectToContactsPage() {
+            window.location.href = 'contacts.html'
+        }
     </script>
     <style>
         .block {
@@ -320,13 +323,13 @@
 
         .arrow {
             position: absolute;
-            top: 1700px;
+            top: 1690px;
             left: calc(50% + 265px); /* Располагаем стрелку немного правее центра */
             transform: translateX(-50%); /* Центрируем стрелку по горизонтали */
             width: 0;
             height: 0;
-            border-top: 20px solid transparent;
-            border-bottom: 20px solid transparent;
+            border-top: 30px solid transparent;
+            border-bottom: 30px solid transparent;
             border-left: 40px solid #1D4E9E; /* Цвет стрелки */
             border-radius: 5px; /* Закругляем углы для обводки */
             border-right: 2px solid #fff; /* Добавляем белую обводку */
@@ -420,7 +423,7 @@
         </button>
         <button class="button" onclick="redirectToNewsPage()">Новости</button>
         <button class="button" onclick="redirectToCalcPage()">Курс валют</button>
-        <button class="button" onclick="">Контактные данные</button>
+        <button class="button" onclick="redirectToContactsPage()">Контактные данные</button>
         <button class="button" onclick="">Видео</button>
     </header>
     <main style="margin-bottom: 1100px;">

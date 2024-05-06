@@ -80,7 +80,9 @@
         function redirectToCalcPage() {
             window.location.href = "calc.html";
         }
-
+        function redirectToContactsPage() {
+            window.location.href = 'contacts.html'
+        }
         // Функция для получения текущей даты
         // Функция для получения текущей даты
         function getCurrentDate() {
@@ -362,8 +364,8 @@
             </div>
         </button>
         <button class="button" onclick="redirectToNewsPage()">Новости</button>
-        <button class="button" onclick="">Курс валют</button>
-        <button class="button" onclick="">Контактные данные</button>
+        <button class="button" onclick="redirectToCalcPage()">Курс валют</button>
+        <button class="button" onclick="redirectToContactsPage()">Контактные данные</button>
         <button class="button" onclick="">Видео</button>
     </header>
     <main>
@@ -376,9 +378,9 @@
             <div id="exchange-rates" class="left-block" style="margin-top: 20px;">
                 <h2>Курс валют на сегодня</h2>
                 <p>Дата: <span id="current-date"></span></p>
-                <p>Рубль к доллару: <span id="rub-to-usd"></span></p>
-                <p>Рубль к евро: <span id="rub-to-eur"></span></p>
-                <p>Рубль к белорусскому рублю: <span id="rub-to-byn"></span></p>
+                <p>Доллар к рублю: <span id="rub-to-usd"></span></p>
+                <p>Евро к рублю: <span id="rub-to-eur"></span></p>
+                <p>Белорусский рубль к рублю: <span id="rub-to-byn"></span></p>
             </div>
             <div class="right-block" style="margin-top: 400px;">
                 <div class="calculator">
