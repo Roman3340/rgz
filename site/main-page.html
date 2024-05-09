@@ -30,6 +30,9 @@
         function redirectToContactsPage() {
             window.location.href = 'contacts.html'
         }
+        function redirectToVideosPage() {
+            window.location.href = 'videos.html'
+        }
     </script>
     <style>
         .mainpagelogo_arm {
@@ -69,21 +72,30 @@
         .best-bank {
             font-size: 90px; /* Размер шрифта "ЛУЧШИЙ БАНК" */
             font-weight: bold; /* Жирный шрифт */
+            position: absolute;
+            margin-left: -700px;
         }
 
         .text-container div:nth-child(2) {
             color: black; /* Цвет остального текста */
             font-size: 90px;
+            position: absolute;
+            margin-top: 90px;
+            margin-left: -600px;
         }
         .text-container div:nth-child(3) {
             color: black; /* Цвет остального текста */
             font-size: 90px;
             font-weight: bold;
             font-family: 'Roboto', sans-serif; /* Устанавливаем шрифт Roboto */
+            position: absolute;
+            margin-top: 190px;
+            margin-left: -690px;
         }
         .chukaeva {
         color: #1D4E9E;
         font-weight: bold;
+        position: absolute;
         }
         
         @keyframes flyUpDownSlow {
@@ -139,7 +151,7 @@
         <button class="button" onclick="redirectToNewsPage()">Новости</button>
         <button class="button" onclick="redirectToCalcPage()">Курс валют</button>
         <button class="button" onclick="redirectToContactsPage()">Контактные данные</button>
-        <button class="button" onclick="">Видео</button>
+        <button class="button" onclick="redirectToVideosPage()">Видео</button>
     </header>
     <main>
         <img class="mainpagelogo_arm" src="../images/planet_arm2.png">

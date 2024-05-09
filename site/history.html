@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>АО "РЕАЛИСТ БАНК" - услуги банка для среднего и малого бизнеса</title>
+    <title>АО "РЕАЛИСТ БАНК" - история банка</title>
     <link rel="stylesheet" href="../main.css">
     <link rel="shortcut icon" href="../favicon/favicon.ico" type="image/x-icon">
     <link rel="icon" href="../favicon/favicon-16x16.png">
@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap">
     <script>
+        
         let i = 0; // Глобальная переменная для отслеживания текущего индекса символа
     
         document.addEventListener("DOMContentLoaded", typeWriterEffect);
@@ -75,7 +76,7 @@
             button.querySelector('.dropdown').style.maxHeight = '0';
             button.querySelector('.dropdown').style.opacity = '0';
         }
-        
+
         // Функция для перенаправления на страницу новостей
         function redirectToNewsPage() {
             window.location.href = "news.html";
@@ -85,6 +86,9 @@
         }
         function redirectToContactsPage() {
             window.location.href = 'contacts.html'
+        }
+        function redirectToVideosPage() {
+            window.location.href = 'videos.html'
         }
     </script>
     <style>
@@ -207,12 +211,11 @@
         <button class="button" onclick="redirectToNewsPage()">Новости</button>
         <button class="button" onclick="redirectToCalcPage()">Курс валют</button>
         <button class="button" onclick="redirectToContactsPage()">Контактные данные</button>
-        <button class="button" onclick="">Видео</button>
+        <button class="button" onclick="redirectToVideosPage()">Видео</button>
     </header>
     <main>
         <div class="text-container">
             <span id="typing-text-1" class="typed-text"></span>
-            <!-- <div>Наша <span class="chukaeva">деятельность</span></div> -->
         </div>
         <div class="blue-bar"></div>
             <div class="content">

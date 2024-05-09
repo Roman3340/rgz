@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АО "РЕАЛИСТ БАНК" - видеоматериалы</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon/favicon-16x16.png">
+    <link rel="icon" href="../favicon/favicon-32x32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Days+One&display=swap" rel="stylesheet">
+
+    <script>
+        function showMenu(button) {
+            button.querySelector('.dropdown').style.maxHeight = '200px';
+            button.querySelector('.dropdown').style.opacity = '1';
+        }
+    
+        function hideMenu(button) {
+            button.querySelector('.dropdown').style.maxHeight = '0';
+            button.querySelector('.dropdown').style.opacity = '0';
+        }
+    
+        // Функция для перенаправления на страницу новостей
+        function redirectToNewsPage() {
+            window.location.href = "news.html";
+        }
+    
+        function redirectToCalcPage() {
+            window.location.href = "calc.html";
+        }
+    
+        function redirectToContactsPage() {
+            window.location.href = 'contacts.html'
+        }
+        
+        function redirectToVideosPage() {
+            window.location.href = 'videos.html'
+        }
+        
+        function showVideo(type) {
+    // Получаем ссылку на контейнер видео и текста
+    var videoContainer = document.getElementById('video-container-' + type);
+    var textContainer = document.getElementById('text-container-' + type);
+
+    // Если контейнер видео существует и он уже открыт, то скрываем его
+    if (videoContainer && videoContainer.style.display === 'block') {
+        videoContainer.style.display = 'none';
+    } else if (textContainer && textContainer.style.display === 'block') {
+        textContainer.style.display = 'none';
+    } else {
+        // Сначала скрываем все блоки с видео и текстом
+        var videoContainers = document.querySelectorAll('[id^="video-container-"]');
+        var textContainers = document.querySelectorAll('[id^="text-container-"]');
+        
+        videoContainers.forEach(function(container) {
+            container.style.display = 'none';
+        });
+
+        textContainers.forEach(function(container) {
+            container.style.display = 'none';
+        });
+
+        // Затем показываем нужный блок в зависимости от выбранного заголовка
+        if (type === 'login') {
+            videoContainer.style.display = 'block';
+            videoContainer.innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/UJXaRGfXoRw?si=Abc2GJ2wxD3dL3jo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+        } else if (type == 'card') {
+            textContainer.style.display = 'block';
+            textContainer.innerHTML = 'Видеоролик в разработке.';
+        } else if (type == 'leasing') {
+            textContainer.style.display = 'block';
+            textContainer.innerHTML = 'Видеоролик в разработке.';
+        } else if (type == 'begin') {
+            textContainer.style.display = 'block';
+            textContainer.innerHTML = 'Видеоролик в разработке.';
+        } else if (type == 'now') {
+            textContainer.style.display = 'block';
+            textContainer.innerHTML = 'Видеоролик в разработке.';
+        } 
+    }
+}
+    </script>
+    <style>
+        .titlePage {
+            font-family: 'Rubik', sans-serif;
+            font-size: 45px;
+            color: #202020;
+            font-weight: 700;
+            margin-top: 120px;
+            margin-left: 300px;
+        }
+        .titleVideo {
+            font-family: 'Rubik', sans-serif;
+            font-size: 25px;
+            color: #202020;
+            font-weight: 700;
+            margin-top: 120px;
+            margin-left: 700px;
+            cursor: pointer;
+        }
+        body {
+            font-family: 'Rubik', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .titleVideo {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .titleVideo h2 {
+            font-family: 'Rubik', sans-serif;
+            font-size: 25px;
+            font-weight: 700;
+            color: #666;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: color 0.3s ease;
+        }
+
+        .titleVideo h2:hover {
+            color: #007bff;
+        }
+
+        .video-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .text-container {
+            font-size: 18px;
+            color: #666;
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header class="buttons-container">
+        <a href="../site/main-page.html" class="header_logo">
+            <img src="https://realistbank.ru/local/media-new-template/images/logo.svg" alt="Реалист банк">
+        </a>
+        <button class="button" onmouseover="showMenu(this)" onmouseout="hideMenu(this)">
+            О компании
+            <div class="dropdown">
+                <a href="about.html">Наша деятельность</a><br>
+                <a href="history.html">История банка</a><br>
+                <a href="team.html">Наша команда</a>
+            </div>
+        </button>
+        <button class="button" onclick="redirectToNewsPage()">Новости</button>
+        <button class="button" onclick="redirectToCalcPage()">Курс валют</button>
+        <button class="button" onclick="redirectToContactsPage()">Контактные данные</button>
+        <button class="button" onclick="redirectToVideosPage()">Видео</button>
+    </header>
+    <main>
+        <div class="titlePage">Видеоролики</div>
+        <div class="titleVideo">
+            <h2 onclick="showVideo('login')">Как зайти в личный кабинет</h2>
+            <div id="video-container-login" class="video-container">
+            </div>
+            <h2 onclick="showVideo('card')">Получение банковской карты</h2>
+            <div id="text-container-card" class="text-container" style="color: black; cursor: default">
+            </div>
+            <h2 onclick="showVideo('leasing')">Лизинг и автокредиты</h2>
+            <div id="text-container-leasing" class="text-container" style="color: black; cursor: default">
+            </div>
+            <h2 onclick="showVideo('begin')">Банк Реалист в начале пути</h2>
+            <div id="text-container-begin" class="text-container" style="color: black; cursor: default">
+            </div>
+            <h2 onclick="showVideo('now')">Банк Реалист сейчас</h2>
+            <div id="text-container-now" class="text-container" style="color: black; cursor: default">
+            </div>
+    </main>
+    <footer>
+        &copy; Чукаев Роман, ФБИ-24, 2 курс, 2024
+    </footer>
+</body>
+</html>
