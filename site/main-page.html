@@ -35,75 +35,101 @@
         }
     </script>
     <style>
-        .mainpagelogo_arm {
-            position: absolute;
-            top: 610px;
-            margin-right: 10px;
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Добавляем для вертикального выравнивания */
+            width: 100%;
+            margin-left: 0%;
+            margin-right: 0%;
+            margin-bottom: 0%;
+            margin-top: 10%;
+            
         }
-        .mainpagelogo_planet {
-            position: absolute;
-            top: 310px;
-            margin-left: 530px;
+
+        .img {
+            width: 60%;
+            height: 70%;
+            position: relative; /* Добавляем позиционирование для абсолютных элементов */
         }
-        .mainpagelogo_coin1 {
-            position: absolute;
-            top: 310px;
-            margin-left: 340px;
-        }
-        .mainpagelogo_coin2 {
-            position: absolute;
-            top: 510px;
-            margin-left: 400px;
-        }
+
+        .mainpagelogo_arm,
+        .mainpagelogo_planet,
+        .mainpagelogo_coin1,
+        .mainpagelogo_coin2,
         .mainpagelogo_coin3 {
             position: absolute;
-            top: 310px;
-            margin-left: 840px;
         }
+
+        .mainpagelogo_arm {
+            margin-top: 26%;
+            left: 0%;
+            width: 80%;
+        }
+
+        .mainpagelogo_planet {
+            margin-top: 2%;
+            margin-left: 48%;
+            width: 27%;
+            animation: flyUpDownSlow 4s infinite ease-in-out alternate;
+        }
+
+        .mainpagelogo_coin1 {
+            margin-top: 1%;
+            margin-left: 75%;
+            width: 10%;
+            animation: flyUpDownFast 5s infinite ease-in-out alternate;
+        }
+
+        .mainpagelogo_coin2 {
+            margin-top: 22%;
+            margin-left: 75%;
+            width: 10%;
+            animation: flyUpDownFast 3s infinite ease-in-out alternate;
+        }
+
+        .mainpagelogo_coin3 {
+            margin-top: 1%;
+            margin-left: 37%;
+            width: 10%;
+            animation: flyUpDownFast 3s infinite ease-in-out alternate;
+        }
+
         .text-container {
-        position: absolute;
-        font-family: 'Rubik', sans-serif;
-        top: 320px; /* Отступ сверху, чтобы соответствовать положению картинки */
-        right: 200px; /* Отступ справа */
-        text-align: right; /* Выравнивание текста по правому краю */
-        color: #1D4E9E; /* Цвет текста "ЛУЧШИЙ БАНК" */
+            font-family: 'Rubik', sans-serif;
+            color: #1D4E9E;
+            width: 40%; /* Устанавливаем ширину текстового блока */
+            position: absolute;
+            margin-top: 30%;
+            margin-left: 60%;
+            transform: translateY(-50%);
         }
 
         .best-bank {
-            font-size: 90px; /* Размер шрифта "ЛУЧШИЙ БАНК" */
-            font-weight: bold; /* Жирный шрифт */
-            position: absolute;
-            margin-left: -700px;
+            font-size: 4vw;
+            font-weight: bold;
         }
-
         .text-container div:nth-child(2) {
-            color: black; /* Цвет остального текста */
-            font-size: 90px;
-            position: absolute;
-            margin-top: 90px;
-            margin-left: -600px;
+            color: black;
+            font-size: 4vw;
         }
         .text-container div:nth-child(3) {
-            color: black; /* Цвет остального текста */
-            font-size: 90px;
+            color: black;
+            font-size: 4vw;
             font-weight: bold;
-            font-family: 'Roboto', sans-serif; /* Устанавливаем шрифт Roboto */
-            position: absolute;
-            margin-top: 190px;
-            margin-left: -690px;
+            font-family: 'Roboto', sans-serif;
         }
         .chukaeva {
-        color: #1D4E9E;
-        font-weight: bold;
-        position: absolute;
+            color: #1D4E9E;
+            font-weight: bold;
         }
-        
+
         @keyframes flyUpDownSlow {
             0%, 100% {
                 transform: translateY(0);
             }
             50% {
-                transform: translateY(-40px);
+                transform: translateY(-7%);
             }
         }
 
@@ -112,27 +138,9 @@
                 transform: translateY(0);
             }
             50% {
-                transform: translateY(-30px);
+                transform: translateY(-9%);
             }
         }
-        
-
-        .mainpagelogo_planet {
-            animation: flyUpDownSlow 4s infinite ease-in-out alternate; /* Применяем анимацию с медленной скоростью */
-        }
-
-        .mainpagelogo_coin1 {
-            animation: flyUpDownFast 5s infinite ease-in-out alternate; /* Применяем анимацию с быстрой скоростью */
-        }
-
-        .mainpagelogo_coin2 {
-            animation: flyUpDownFast 4s infinite ease-in-out alternate; /* Применяем анимацию с быстрой скоростью */
-        }
-
-        .mainpagelogo_coin3 {
-            animation: flyUpDownFast 3s infinite ease-in-out alternate; /* Применяем анимацию с быстрой скоростью */
-        }
-
     </style>
 </head>
 <body>
@@ -154,15 +162,19 @@
         <button class="button" onclick="redirectToVideosPage()">Видео</button>
     </header>
     <main>
-        <img class="mainpagelogo_arm" src="../images/planet_arm2.png">
-        <img class="mainpagelogo_planet" src="../images/planet1.png">
-        <img class="mainpagelogo_coin1" src="../images/planet_coin1.png">
-        <img class="mainpagelogo_coin2" src="../images/planet_coin2.png">
-        <img class="mainpagelogo_coin3" src="../images/planet_coin3.png">
-        <div class="text-container">
-            <div class="best-bank">ЛУЧШИЙ БАНК</div>
-            <div>по мнению</div>
-            <div>Романа <span class="chukaeva">Чукаева</span></div>
+        <div class="container">
+            <div class="img">
+                <img class="mainpagelogo_arm" src="../images/planet_arm2.png">
+                <img class="mainpagelogo_planet" src="../images/planet1.png">
+                <img class="mainpagelogo_coin1" src="../images/planet_coin1.png">
+                <img class="mainpagelogo_coin2" src="../images/planet_coin2.png">
+                <img class="mainpagelogo_coin3" src="../images/planet_coin3.png">
+            </div>
+            <div class="text-container">
+                <div class="best-bank">ЛУЧШИЙ БАНК</div>
+                <div>по мнению</div>
+                <div>Роман <span class="chukaeva">Чукаева</span></div>
+            </div>
         </div>
     </main>
     <footer>

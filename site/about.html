@@ -91,10 +91,28 @@
         }
     </script>
     <style>
+        .block-cont {
+            display: flex;
+            /*justify-content: center;  Центрируем блоки по горизонтали */
+            /*align-items: center;  Центрируем блоки по вертикали */
+            width: 100%;
+            padding: 20px; /* Добавляем отступы для блоков */
+            box-sizing: border-box; /* Учитываем padding в общей ширине блока */
+        }
+        .block-cont2 {
+            display: flex;
+            /*justify-content: center;  Центрируем блоки по горизонтали */
+            /*align-items: center;  Центрируем блоки по вертикали */
+            width: 100%;
+            padding: 20px; /* Добавляем отступы для блоков */
+            box-sizing: border-box; /* Учитываем padding в общей ширине блока */
+        }
+
         .block {
             position: relative; /* Используем относительное позиционирование */
-            padding: 20px;
-            width: 400px; /* Увеличиваем ширину для четвертого блока */
+            padding: 2vh;
+            width: 20%;
+            height: 20%; 
             text-align: left;
             border-radius: 10px; /* Закругляем углы */
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Добавляем тень */
@@ -107,11 +125,15 @@
             border: #1D4E9E solid 2px;
             color: black;
             font-family: 'Rubik', sans-serif;
-            top: 400px;
-            left: 150px;
-            width: 400px;
-            height: 200px;
+            margin-top: 180px;
+            margin-left: 200px;
+            width: 35%;
+            min-width: 400px;
+            height: 20%;
+            min-height: 250px;
             cursor: pointer;
+            padding: 0;
+            position: relative;
         }
 
         /* Стили для белого блока */
@@ -120,11 +142,14 @@
             border: #1D4E9E solid 2px;
             color: black;
             font-family: 'Rubik', sans-serif;
-            top: 157px;
-            left: 710px;
-            width: 400px;
-            height: 200px;
+            margin-top: 180px;
+            margin-left: 150px;
+            width: 35%;
+            min-width: 400px;
+            height: 20%;
+            min-height: 250px;
             cursor: pointer;
+            padding: 0;
         }
 
         /* Стили для серого блока */
@@ -133,11 +158,14 @@
             border: #1D4E9E solid 2px;
             color: black;
             font-family: 'Rubik', sans-serif;
-            top: -83px;
-            left: 1290px;
-            width: 400px;
-            height: 200px;
+            margin-top: 60px;
+            margin-left: 200px;
+            width: 35%;
+            min-width: 400px;
+            height: 20%;
+            min-height: 250px;
             cursor: pointer;
+            padding: 0;
         }
 
         .black-block-down {
@@ -145,11 +173,14 @@
             border: #1D4E9E solid 2px;
             color: black;
             font-family: 'Rubik', sans-serif;
-            top: -20px;
-            left: 710px;
-            width: 400px;
-            height: 200px;
+            margin-top: 60px;
+            margin-left: 150px;
+            width: 35%;
+            min-width: 400px;
+            height: 20%;
+            min-height: 250px;
             cursor: pointer;
+            padding: 0;
         }
 
         /* При наведении меняем размер блока */
@@ -159,29 +190,14 @@
         }
 
         .text-container {
-            position: absolute;
+            position: relative;
             font-family: 'Rubik', sans-serif;
-            top: 200px;
-            left: 50%; /* Центрируем начальное положение */
+            margin-top: 10%;
+            margin-left: 50%; /* Центрируем начальное положение */
             transform: translateX(-50%); /* Центрируем по горизонтали */
             text-align: center; /* Выравниваем текст по центру */
             color: black;
             font-size: 90px;
-        }
-
-        .text-container div:nth-child(2) {
-            color: black; /* Цвет остального текста */
-            font-size: 90px;
-        }
-        .text-container div:nth-child(3) {
-            color: black; /* Цвет остального текста */
-            font-size: 90px;
-            font-weight: bold;
-            font-family: 'Roboto', sans-serif; /* Устанавливаем шрифт Roboto */
-        }
-        .bluetext {
-            color: #1D4E9E;
-            font-weight: bold;
         }
 
         /* Стили для текста */
@@ -205,30 +221,76 @@
         .activity_first {
             position: absolute;
             margin-right: 0px;
-            margin-top: -30px;
-            margin-left: 230px;
+            margin-top: 10%;
+            margin-left: 75%;
             z-index: 2;
         }
         .activity_first2 {
             position: absolute;
             margin-right: 0px;
-            margin-top: -38px;
-            margin-left: 240px;
+            margin-top: 10%;
+            margin-left: 75%;
             z-index: 2;
         }
         .activity_first3 {
             position: absolute;
             margin-right: 0px;
-            margin-top: -30px;
-            margin-left: 260px;
+            margin-top: 10%;
+            margin-left: 75%;
             z-index: 2;
         }
         .activity_first4 {
             position: absolute;
             margin-right: 0px;
-            margin-top: -20px;
-            margin-left: 260px;
+            margin-top: 0%;
+            margin-left: 75%;
             z-index: 2;
+        }
+
+        .container-block1 {
+            display: flex;
+            align-items: center; /* Добавляем для вертикального выравнивания */
+            width: 100%;
+            margin-left: 0%;
+            margin-right: 0%;
+            margin-bottom: 0%;
+            margin-top: 0%;
+            
+        }
+
+        .container-block2 {
+            display: flex;
+            align-items: center; /* Добавляем для вертикального выравнивания */
+            width: 100%;
+            margin-left: 0%;
+            margin-right: 0%;
+            margin-bottom: 0%;
+            margin-top: 0%;
+            
+        }
+        .container-block3 {
+            display: flex;
+            align-items: center; /* Добавляем для вертикального выравнивания */
+            width: 100%;
+            margin-left: 0%;
+            margin-right: 0%;
+            margin-bottom: 0%;
+            margin-top: 0%;
+            
+        }
+        .container-block4 {
+            display: flex;
+            align-items: center; /* Добавляем для вертикального выравнивания */
+            width: 100%;
+            margin-left: 0%;
+            margin-right: 0%;
+            margin-bottom: 0%;
+            margin-top: 0%;
+            
+        }
+        ul {
+            list-style-type: none;
+            width: 100%;
         }
     </style>
 </head>
@@ -253,35 +315,53 @@
     <main>
         <div class="text-container">
             <span id="typing-text-1" class="typed-text"></span>
-            <!-- <div>Наша <span class="chukaeva">деятельность</span></div> -->
         </div>
-        <div class="block blue-block">
-            <img class="activity_first" src="../images/service_0_1_.png">
-            <h2>Лизинг и автокредит</h2>
-            <p><b>от 5%</b> - аванс.</p>
-            <p><b>до 10 лет</b> - финансируем<br>технику с пробегом.</p>
-            <p>одобрение <b>до 50 млн руб</b></p>
+        <div class="block-cont">
+            <div class="block blue-block">
+                <div class="container-block1">
+                    <ul style="margin-top: 0;">
+                        <li><h2>Лизинг и автокредит</h2></li>
+                        <li><p><b>от 5%</b> - аванс.</p></li>
+                        <li><p><b>до 10 лет</b> - финансируем технику с пробегом.</p></li>
+                        <li><p>одобрение <b>до 50 млн руб</b></p></li>
+                    </ul>
+                    <img class="activity_first" src="../images/service_0_1_.png">
+                </div>
+            </div>
+            <div class="block black-block">
+                <div class="container-block2">
+                    <ul style="margin-top: 0;">
+                        <li><h2>Счет для бизнеса</h2></li>
+                        <li><p><b>0 рублей</b> - открытие расчетного<br>счета</p></li>
+                        <li><p><b>1 день</b> - срок открытия счета</p></li>
+                    </ul>
+                    <img class="activity_first2" src="../images/service_0_4.png">
+                </div>
+            </div>
         </div>
-        <div class="block black-block">
-            <img class="activity_first2" src="../images/service_0_4.png">
-            <h2>Счет для бизнеса</h2>
-            <p><b>0 рублей</b> - открытие расчетного<br>счета</p>
-            <p><b>1 день</b> - срок открытия счета</p>
-        </div>
-        <div class="block gray-block">
-            <img class="activity_first3" src="../images/service_0_3.png">
-            <h2>Операции на рынке<br>драгоценных металлов</h2>
-            <p>Торговые операции<br>с драгоценными металлами</p>
-            <p>Финансирование<br>недропользователей</p>
-        </div>
-
-        <div class="block black-block-down">
-            <img class="activity_first4" src="../images/service_0_2.png">
-            <h2>Кредиты и гарантии</h2>
-            <p>Овердрафт</p>
-            <p>Ипотека для бизнеса</p>
-            <p>Банковские гарантии</p>
-            <p>Экспресс кредит на исполнение<br>контракта</p>
+        <div class="block-cont2">
+            <div class="block gray-block">
+                <div class="container-block3">
+                    <ul style="margin-top: 0;">
+                        <li><h2>Операции на рынке<br>драгоценных металлов</h2></li>
+                        <li><p>Торговые операции<br>с драгоценными металлами</p></li>
+                        <li><p>Финансирование<br>недропользователей</p></li>
+                    </ul>
+                    <img class="activity_first3" src="../images/service_0_3.png">
+                </div>
+            </div>
+            <div class="block black-block-down">
+                <div class="container-block4">
+                    <ul style="margin-top: 0;">
+                        <li><h2>Кредиты и гарантии</h2></li>
+                        <li><p>Овердрафт</p></li>
+                        <li><p>Ипотека для бизнеса</p></li>
+                        <li><p>Банковские гарантии</p></li>
+                        <li><p>Экспресс кредит на исполнение<br>контракта</p></li>
+                    </ul>
+                    <img class="activity_first4" src="../images/service_0_2.png">
+                </div>
+            </div>
         </div>
     </main>
     <footer>

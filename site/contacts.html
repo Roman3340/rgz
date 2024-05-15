@@ -100,7 +100,7 @@
             color: #202020;
             font-weight: 700;
             margin-top: 120px;
-            margin-left: 300px;
+            margin-left: 17%;
         }
 
         /* Стили для текста */
@@ -129,15 +129,18 @@
         }
 
         .map-container {
-            position: absolute;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
             margin-top: 120px;
-            margin-left: 840px;
-            margin-bottom: 20px;
+            margin-left: 17%;
+            margin-right: 80%;
             text-align: center; /* Центрирование текста */
             cursor: pointer;
         }
 
         .map-label {
+            position: relative;
             color: #000000;
             font-size: 31px;
             font-weight: bold;
@@ -149,6 +152,7 @@
         }
 
         .map-label.active {
+            position: relative;
             color: #1D4E9E;
             font-weight: bold;
             font-size: 31px;
@@ -161,18 +165,19 @@
         }
 
         .separator {
+            position: relative;
             font-size: 25px;
             margin: 0 5px;
         }
 
         .undermap_title {
-            margin-left: 300px;
+            margin-left: 18%;
             margin-top: 60px;
             font-family: 'Rubik', sans-serif;
             font-weight: bold;
         }
         .undermap_text {
-            margin-left: 300px;
+            margin-left: 18%;
             margin-top: 20px;
             font-size: 14px;
             font-family: 'Rubik', sans-serif;
@@ -213,7 +218,7 @@
             <span class="separator">|</span>
             <span id="atms" class="map-label" onmouseover="highlightATMs()" onclick="switchToATMs()" onmouseout="highlightATMs()">Банкоматы</span>
         </div>    
-        <iframe id="map-iframe" style="margin-left: 306px; margin-top: 170px;" src="https://yandex.ru/map-widget/v1/?display-text=%D0%A0%D0%B5%D0%B0%D0%BB%D0%B8%D1%81%D1%82%20%D0%91%D0%B0%D0%BD%D0%BA%2C%20%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F&ll=37.648283%2C55.972103&mode=search&sll=37.648283%2C55.972103&sspn=2.566306%2C0.872907&text=%7B%22text%22%3A%22%D0%A0%D0%B5%D0%B0%D0%BB%D0%B8%D1%81%D1%82%20%D0%91%D0%B0%D0%BD%D0%BA%2C%20%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%22%2C%22what%22%3A%5B%7B%22attr_name%22%3A%22chain_id%22%2C%22attr_values%22%3A%5B%2253188462079%22%5D%7D%5D%7D&z=9.62" width="1400" height="600" frameborder="1" allowfullscreen="true"></iframe>
+        <iframe id="map-iframe" style="margin-left: 17%; margin-top: 1%; width: 70%;" src="https://yandex.ru/map-widget/v1/?display-text=%D0%A0%D0%B5%D0%B0%D0%BB%D0%B8%D1%81%D1%82%20%D0%91%D0%B0%D0%BD%D0%BA%2C%20%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F&ll=37.648283%2C55.972103&mode=search&sll=37.648283%2C55.972103&sspn=2.566306%2C0.872907&text=%7B%22text%22%3A%22%D0%A0%D0%B5%D0%B0%D0%BB%D0%B8%D1%81%D1%82%20%D0%91%D0%B0%D0%BD%D0%BA%2C%20%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%22%2C%22what%22%3A%5B%7B%22attr_name%22%3A%22chain_id%22%2C%22attr_values%22%3A%5B%2253188462079%22%5D%7D%5D%7D&z=9.62" width="1400" height="600" frameborder="1" allowfullscreen="true"></iframe>
         <div class="undermap_title">Официальные каналы<br><br>
             Реалист банк
         </div>
